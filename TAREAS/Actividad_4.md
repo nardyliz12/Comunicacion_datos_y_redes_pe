@@ -1,7 +1,7 @@
 # Actividad 4: Configuración inicial de un Switch
 ##### ENLACE A LA ACTIVIDAD 4 EN SOFTWARE https://github.com/Fx2048/COMU_TEAM/tree/main/CISCO_PACKET_TRACER
 
-![image](https://github.com/Fx2048/COMU_TEAM/assets/131219987/ffb6f924-4197-4f30-87bc-319013a86b68)
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/blob/5228f20f3f8e695d7c84c28e5475ae03382a0f12/CISCO_PACKET_TRACER/Activiad_4.pka)
 
 
 Preguntas

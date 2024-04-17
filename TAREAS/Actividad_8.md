@@ -1,5 +1,9 @@
 # Actividad 8: Comunicaciones de TCP y UDP
 
+### Objetivos 
+- Parte 1: Generar tráfico de red en el modo de simulación
+- Parte 2: Examinar la funcionalidad de los protocolos TCP y UDP
+  
 ### Examina la multiplexación a medida que el tráfico cruza la red
 
 - **¿Cómo se llama esto?**

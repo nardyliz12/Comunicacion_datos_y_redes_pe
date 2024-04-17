@@ -1,71 +1,110 @@
-♾️ Actividad 6: Crear una red con un switch y un router - Modo Físico
+## ACTIVIDAD 7: INVESTIGACIÓN DE LOS MODELOS TCP/IP Y OSI
 
-## 📂ENLACE A LA ACTIVIDAD 6 EN SOFTWARE 
+### OBJETIVOS:
+- Parte 1: Examinar el tráfico web HTTP
+-  Parte 2: Mostrar elementos de la suite de protocolos TCP/IP
+-  Utiliza el archivo .pka que acompaña la actividad.
 
-https://github.com/Fx2048/COMU_TEAM/tree/main/CISCO_PACKET_TRACER
+## EXAMINAR EL TRÁFICO WEB HTTP
+### Responde las diguientes preguntas:
 
+### Genera tráfico web (HTTP)
 
-## 📂Preguntas Responde las siguientes preguntas:
+- **Observa la página del navegador web del cliente web. ¿Cambió algo?**
+   
+  Lo que se puede observar es que se accedió exitosamente a la página.
+  ![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/7df9d172-2cb6-49d9-8a69-2b7f581998b6)
+  
+### Explora el contenido del paquete HTTP
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/4a8b2548-c2ef-4644-84f1-761b9f07afa1)
 
-### 🔼 a)  ¿Por qué los pings no fueron correctos?  
- ✅ En el caso presentado , estos no han sIdo correctos porque  no se ha configurado la direccion IP  o no 
-están conectados.
+- **¿Qué información se indica en los pasos numerados directamente debajo de los cuadros *capas de entrada* y *capas de salida***
 
-### 🔼 En unaventana con el símbolo del sistema en la PC-A, haga ping a la PC-B.
- Nota: Si los pings no son correctos, es posible que debas desactivar el Firewall.
- 
- ## 📂Pregunta
- 
- ### ¿Fueron correctos los pings? Explica. 
+Nos muestra información de como el cliente envía una solicitud HTTP al servidor.
 
-✅No fueron correctos los pings, porque el router lleva el tráfico en sus dos 
-raíces, Giga Ethernet 0/0 , y gigaethernet 0/1, y esto es puesto a  la configuracion la cual no ha sido configurada por completo.
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/51a570a3-a91a-4100-a4b6-c78a1471b529)
+- **¿Cuál es el valor del *puerto Dst* para la capa 4 en la columna *Capas de salida?***
 
-### 🔼¿Qué código se utiliza en la tabla de enrutamiento para indicar una red conectada directamente?
+El DST es el puerto de destino, donde nos indica que para la capa 4 es el puerto 80.
 
- ✅Se usa el código (L)local,(C)connected, (S)static, (R)rip ,(M) mobile y (B)BGP respectivamente.
+- **¿Cuál es el destino?, ¿Vaor IP para la capa 3 en la columna Capas de salida?**
 
-### 🔼¿Cuántas entradas de ruta están codificadas con un código C en la tabla de enrutamiento? 
+El puerto de destino para le capa 3 es 192.16.1.254.
 
-#### ✅ Las entradas expuestas son las de tipo C mostradas a continuación:
--  192.168.0.0/24 is directly connected. GigabitEthernet 0/0/0/
--  192.168.0.0/32 is directly connected , GigabitEthernet 0/0/1.
+- **¿Qué información se muestras en la Capa 2 en la columna *Capas de salida?***
 
-### 🔼Qué tipos de interfaces están asociadas a las rutas con código C? 
+Nos muestra el MAC de origen y el MAC de destino, es decir nos da información de ambas MAC.
 
-#### ✅Las interfaces asociadas son las siguientes:
--Gigaethernet 0/0/0
--Gigaethernet 0/0/1 
+- **¿Cuál es la información frecuente que se indica en la sección IP de detalles de PDU comparada con la información que se indica en la ficha Modelo OSI? ¿Con qué capa se relaciona?**
 
-### 🔼¿Cuál es el estado operativo de la interfaz G0/0/1? 
- 
-  ✅Conectado de momento (Is up connected)
- 
-### 🔼¿Cuál es la dirección de control de acceso a los medios (MAC) de la interfaz G0/0/1? 
+En la capa de IP, la información que tiene en común es la direccipon tanto como de origen y de destino, relacionados a la capa 3.
 
-✅Es la siguiente: 0060_6C92 (BIS 0060::6C83 6002)
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/53b0cb39-d882-417c-91c6-7bfc6354bc73)
 
-### 🔼¿Cómo se muestra la dirección de Internet en este comando?
+- **¿Cuál es la información frecuente que se indica en la sección IP de Detalles de PDU comparada con la información que se indica en la ficha Modelo OSI?**
 
- ✅ De la siguiente manera: 192.160.1.1/2
+En TSP, la infromación que se tiene en común es entre el puerto de origen y de destino, relacionados a la capa 4.
 
-## 📂Preguntas 
+- **¿Cuál es el host que se indica en la sección HTTP de Detalles de PDU? ¿Con qué capa se relacionaría esta información en la ficha Modelo OSI?**
 
-### 🔼1. Si la interfaz G0/0/1 se mostrará administratively down, ¿qué comando de configuración de interfaz usaría para activar la interfaz? 
+El host es www.osi.local, que se situa en la capa 7.
 
-#### ✅ La configuración de las interfaces se realiza desde:
-1.Submodo de configuración de interfaces.
-2.Digitamos interface cuando nos encontramos en modo de configuracion global (lo cual cambiaría a  config if)
-3.Posteriormente, cambiamos al  comando "no shut" o "not shutdown" , porque este se habilita para cambiar interfaces.
-4.Ejecutamos.
-5.La interface debe activarse.
+- **Compara la información que se muestra en la columna Capas de entrada con la de la columna Capas de salida: ¿cuáles son las diferencias principales?**
 
+Si nos fijamos en la capa 1 y 7 son exactamente iguales, lo que cambia es en la capa 2 hasta la 4 tanto en ambas columnas, ya que cambia el posicionamiento de la MAC de origen y destino, donde igualemente en la capa 3 cambia dirreción IP de origen y destino viciversa, y finalmente en la capa 4 cambia los puertos de origen y destino.
 
-### 🔼2. ¿Qué ocurriría si hubiera configurado incorrectamente la interfaz G0/0/1 en el router con una dirección IP 192.168.1.2?
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/08fe0254-5ca4-4701-941c-417dddb3673e)
 
-✅La PC-A no podría hacer pin a PCB.Puntualmente, esto es debido a que la PCB está en una red diferente a la de PCA 
-que requiere del router del waterwall determinado para dirigir estos paquetes , la PC-A por su parte está 
-configurada para dirigir estos paquetes y utilizar solamente la dirección "IP 162 .168 .1.1" , para el 
-ruoter del waterwall predeterminado, pero; esta dirección no está asignada a ningún dsipositivo en la 
-LAN, asi que cualquier paquete que vaya  a ser enviado para su enrutamiento nunca llegará al 
-destino. 
+- **Haz clic en el último cuadro coloreado de la columna Información.Explica los resultados.**
+
+Nos aparece dos pestañas: Osi mode, y inbound pdu details, porque son la información que están llegando del servidor al cliente web. 
+
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/75747f92-1104-4603-b794-18c7b8660777)
+
+## MOSTRAR ELEMENTOS DE LA SUITE DE PROTOCOLOS TPC/IP
+
+### Ver eventos adicionales
+
+- **¿Qué tipos de eventos adicionales se muestran?**
+
+Tenemos DNS, ARP, TCP Y HTTP, donde se han agregado 3 protocolos más aparte de HTTP.
+
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/900e1427-e07b-4e78-9cb4-36e4fa3b7dea)
+
+- **¿Qué información se indica en NOMBRE: en la sección CONSULTA DNS?**
+
+En la sección de DNS QUERY  nos indica www.osi.local 
+
+- **¿En qué dispositivo se capturó la PDU?**
+
+Se capturo en At Device, es decir en Web client.
+
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/5770109c-38ff-4326-abe4-4d32ca8aed3d)
+
+- **¿Cuál es el valor que se indica junto a DIRECCIÓN: en la sección RESPUESTA DE DNS de Detalles de la PDU entrante?**
+
+La dirección que aparece es 192.168.1.254 donde este valor es la dirreción del servidor web, porque de ahi esta llegando el evento que se esta tratando.
+
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/da2a9007-db3f-4922-af99-6c708e046daf)
+
+-  **¿Cuál es la información que se muestra en los elementos 4 y 5?**
+
+En el elemento 4 nos indica que la conección TCP se ha realizado de manera exitosa, mientras que en la 5 nos indica que el dispositivo a estabelcido la conección en estado ESTABLISHED (estado establecido).
+
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/412f2748-9280-4a92-8f30-64f16a7e41b0)
+
+-  **¿Cuál es el propósito de este evento, según la información proporcionada en el último elemento de la lista (debe ser el elemento 4)?**
+
+Nos indica que el dispositivo ha sido estblecido en estado cerrado, es decir ha finalizado la conección TCP.
+
+#### PREGUNTAS:
+
+- **Sobre la base de la información que se analizó durante la captura de Packet Tracer, ¿qué número de puerto escucha el servidor web para detectar la solicitud web?**
+
+El servidor web esta escuchando en el puerto 80.
+
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/a37c002e-0945-48c7-bcce-f8bcf423636d)
+
+- **¿Qué puerto escucha el servidor web para detectar una solicitud de DNS?**
+
+El solicitud DNS está escuchando al servidor web en el puerto 53.

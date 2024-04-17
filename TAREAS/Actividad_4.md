@@ -4,9 +4,16 @@ https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/tree/74c9a857ffd7e8f
 
 ![image](https://github.com/Fx2048/COMU_TEAM/assets/131219987/ffb6f924-4197-4f30-87bc-319013a86b68)
 
+### Objetivos 
+- Parte 1: Verifica la configuración predeterminada del switch
+- Parte 2: Establece una configuración básica del switch
+- Parte 3: Configura un aviso de MOTD
+- Parte 4: Guarda los archivos de configuración en la NVRAM
+- Parte 5: Configura el S2 
 
-Preguntas
-Responde las siguientes preguntas:
+### Preguntas
+#### Responde las siguientes preguntas:
+
 - a) **¿Cuántas interfaces Fast Ethernet tiene el switch?**
   
 - ![image](https://github.com/Fx2048/COMU_TEAM/assets/131219987/281411b0-8a02-44af-a7a4-53a8247cdb3f)

@@ -2,7 +2,7 @@
 
 ## 📂ENLACE A LA ACTIVIDAD 6 EN SOFTWARE 
 
-ttps://github.com/Fx2048/COMU_TEAM/tree/main/CISCO_PACKET_TRACER
+https://github.com/Fx2048/COMU_TEAM/tree/main/CISCO_PACKET_TRACER
 
 
 ## 📂Preguntas Responde las siguientes preguntas:

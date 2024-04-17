@@ -1,71 +1,103 @@
-♾️ Actividad 6: Crear una red con un switch y un router - Modo Físico
+# ACTIVIDAD 5: IDENTIDICACIÓN DE DIRECCIONES MAC Y DIRECCIONES IP
 
-## 📂ENLACE A LA ACTIVIDAD 6 EN SOFTWARE 
+### OBJETIVOS:
+- Parte 1: Recopilar información de PDU para la comunicación de red local
+- Parte 2: Recopilar información de PDU para la comunicación de red remota 
 
-https://github.com/Fx2048/COMU_TEAM/tree/main/CISCO_PACKET_TRACER
+## 1. Recopila información del PDU para la comunicación de red remota 
 
+### Pregunta:
 
-## 📂Preguntas Responde las siguientes preguntas:
+- **¿Qué dispositivo tiene el MAC de destino que se muestra?**
 
-### 🔼 a)  ¿Por qué los pings no fueron correctos?  
- ✅ En el caso presentado , estos no han sIdo correctos porque  no se ha configurado la direccion IP  o no 
-están conectados.
+El dispositivo con la dirección MAC de destino 00D0:BA8E:741A es el router
 
-### 🔼 En unaventana con el símbolo del sistema en la PC-A, haga ping a la PC-B.
- Nota: Si los pings no son correctos, es posible que debas desactivar el Firewall.
+### Preguntas:
+#### Responde las siguientes preguntas relacionadas con los datos capturados:
+
+- **1. ¿Se utilizaron diferentes tipos de cables / medios para conectar dispositivos?**
+
+Sí, tenemos 3 tipos, un medio inalámbrico, otro directo de cobre, y otro de fibra óptica.
+
+- **2. ¿Los cables cambiaron el manejo de la PDU de alguna manera?**
+
+No, ya que solo los cables trabajan a nivel capa 1.
+
+- **3. ¿El Hub perdió parte de la información que recibió?**
  
- ## 📂Pregunta
+ No, perdió la información.
+
+- **4. ¿Qué hace el hub con las direcciones MAC y las direcciones IP?**
+
+El hub no hace nada, solo reenvia a todos sus puertos la trama o el paquete que se envía.
+
+- **5. ¿El punto de acceso inalámbrico hizo algo con la información que se le entregó?**
  
- ### ¿Fueron correctos los pings? Explica. 
+ Sí, este punto de acceso vuelve a empatquetar la trama en una forma inalámcbrica para que viaje por el aire.
 
-✅No fueron correctos los pings, porque el router lleva el tráfico en sus dos 
-raíces, Giga Ethernet 0/0 , y gigaethernet 0/1, y esto es puesto a  la configuracion la cual no ha sido configurada por completo.
+- **6. ¿Se perdió alguna dirección MAC o IP durante la transferencia inalámbrica?**
 
-### 🔼¿Qué código se utiliza en la tabla de enrutamiento para indicar una red conectada directamente?
+No, perdió minguna dirreción IP o MAC.
 
- ✅Se usa el código (L)local,(C)connected, (S)static, (R)rip ,(M) mobile y (B)BGP respectivamente.
+- **7. ¿Cuál fue la capa OSI más alta que utilizaron el hub y el punto de acceso?** 
 
-### 🔼¿Cuántas entradas de ruta están codificadas con un código C en la tabla de enrutamiento? 
+El access point solo trabajan a nivel capa 1.
 
-#### ✅ Las entradas expuestas son las de tipo C mostradas a continuación:
--  192.168.0.0/24 is directly connected. GigabitEthernet 0/0/0/
--  192.168.0.0/32 is directly connected , GigabitEthernet 0/0/1.
+- **8. ¿El hub o el punto de acceso reprodujeron en algún momento una PDU rechazada con una “X” de color rojo?**
 
-### 🔼Qué tipos de interfaces están asociadas a las rutas con código C? 
+Sí, ya que al reenviar a todos los puertos, solo uno es el destino, mientras que los demás rechaza, porque no son el destino.
 
-#### ✅Las interfaces asociadas son las siguientes:
--Gigaethernet 0/0/0
--Gigaethernet 0/0/1 
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/b9921858-761f-431b-9cb2-6fa9ca18a89d)
 
-### 🔼¿Cuál es el estado operativo de la interfaz G0/0/1? 
- 
-  ✅Conectado de momento (Is up connected)
- 
-### 🔼¿Cuál es la dirección de control de acceso a los medios (MAC) de la interfaz G0/0/1? 
+- **9. Al examinar la ficha PDU Details (Detalles de PDU), ¿qué dirección MAC aparecía primero, la de origen o la de destino?**
 
-✅Es la siguiente: 0060_6C92 (BIS 0060::6C83 6002)
+En este caso aparece la de destino.
 
-### 🔼¿Cómo se muestra la dirección de Internet en este comando?
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/9b8abb3b-7234-4463-b946-7a53f066df62)
 
- ✅ De la siguiente manera: 192.160.1.1/2
+- **10. ¿Por qué las direcciones MAC aparecen en este orden?**
 
-## 📂Preguntas 
+Porque si ya se se conoce primero el destino, este se enviará rapidamente.
 
-### 🔼1. Si la interfaz G0/0/1 se mostrará administratively down, ¿qué comando de configuración de interfaz usaría para activar la interfaz? 
+- **11. ¿Había un patrón para el direccionamiento MAC en la simulación?**
 
-#### ✅ La configuración de las interfaces se realiza desde:
-1.Submodo de configuración de interfaces.
-2.Digitamos interface cuando nos encontramos en modo de configuracion global (lo cual cambiaría a  config if)
-3.Posteriormente, cambiamos al  comando "no shut" o "not shutdown" , porque este se habilita para cambiar interfaces.
-4.Ejecutamos.
-5.La interface debe activarse.
+ En este caso No hubo un patrón de direccionamiento MAC.
 
+- **12. ¿Los switches reprodujeron en algún momento una PDU rechazada con una “X” de color rojo?**
 
-### 🔼2. ¿Qué ocurriría si hubiera configurado incorrectamente la interfaz G0/0/1 en el router con una dirección IP 192.168.1.2?
+No, ya que el swtich solo reenvia al destino que se requiere y no a todas las PCS.
 
-✅La PC-A no podría hacer pin a PCB.Puntualmente, esto es debido a que la PCB está en una red diferente a la de PCA 
-que requiere del router del waterwall determinado para dirigir estos paquetes , la PC-A por su parte está 
-configurada para dirigir estos paquetes y utilizar solamente la dirección "IP 162 .168 .1.1" , para el 
-ruoter del waterwall predeterminado, pero; esta dirección no está asignada a ningún dsipositivo en la 
-LAN, asi que cualquier paquete que vaya  a ser enviado para su enrutamiento nunca llegará al 
-destino. 
+- **13. Cada vez que se enviaba la PDU entre las redes 10 y 172, había un punto donde las direcciones MAC 
+ cambiaban repentinamente. ¿Dónde ocurrió eso?**
+
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/ecedde0b-f6eb-4712-bac0-10f6daa52e02)
+
+- **14. Sí, cambió en el router¿Qué dispositivo usa direcciones MAC que comienzan con 00D0: BA?** 
+
+Era la del router.
+
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/3d7f7ac2-702a-4dfe-855e-57caf53d8f48)
+
+- **15. ¿A qué dispositivos pertenecían las otras direcciones MAC?**
+
+Petenecnía a direcciones emisores, receptores, que podía n ser acces point, switchers,
+
+- **16. ¿Las direcciones IPv4 de envío y recepción cambiaron los campos en alguna de las PDU?**
+
+No cambiaron en ningún campo de las PDU.
+
+- **17. Cuando sigue la respuesta a un ping, a veces llamado pong, ¿ve el cambio de envío y recepción de direcciones IPv4?**
+
+Sí se logra visualizar el envio y repecepción de las direccions IPv4.
+
+- **18. ¿Cuál es el patrón para el direccionamiento IPv4 utilizado en esta simulación?**
+
+Cada pueto debe manejar una direccion IP diferente, y cada Dispositivo dentro de la red, debe no solaparse.
+
+- **19. ¿Por qué es necesario asignar diferentes redes IP a los diferentes puertos de un router?** 
+
+ Es necesario para interconectar dos redes que se realizan en la simulación.
+
+- **20. Si esta simulación se configura con IPv6 en lugar de IPv4, ¿cuál sería la diferencia?**
+
+Todo sería igual, solo el formato donde se manejan las direcciones IP, ya que la IPv6 manejan una versión sexageNO simal.

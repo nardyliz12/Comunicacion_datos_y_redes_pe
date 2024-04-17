@@ -1,71 +1,131 @@
-♾️ Actividad 6: Crear una red con un switch y un router - Modo Físico
+# Actividad 8: Comunicaciones de TCP y UDP
 
-## 📂ENLACE A LA ACTIVIDAD 6 EN SOFTWARE 
+### Examina la multiplexación a medida que el tráfico cruza la red
 
-https://github.com/Fx2048/COMU_TEAM/tree/main/CISCO_PACKET_TRACER
+- **¿Cómo se llama esto?**
 
+Se llama multiplexación, es transmitir diferentes datos por un mismo medio pero no simultaneamente.
 
-## 📂Preguntas Responde las siguientes preguntas:
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/5b3a0cb3-d1e4-4852-a2fc-e6be0953ef13)
 
-### 🔼 a)  ¿Por qué los pings no fueron correctos?  
- ✅ En el caso presentado , estos no han sIdo correctos porque  no se ha configurado la direccion IP  o no 
-están conectados.
+- **Aparece una variedad de PDU en la lista de eventos en el Panel de simulación. ¿Cuál es el significado de los diferentes colores?**
+  
+Significa los protocolos que se usa en cada PDU.
 
-### 🔼 En unaventana con el símbolo del sistema en la PC-A, haga ping a la PC-B.
- Nota: Si los pings no son correctos, es posible que debas desactivar el Firewall.
- 
- ## 📂Pregunta
- 
- ### ¿Fueron correctos los pings? Explica. 
+### Examinar la funionalidad de los prtocolos TCP y UDP
 
-✅No fueron correctos los pings, porque el router lleva el tráfico en sus dos 
-raíces, Giga Ethernet 0/0 , y gigaethernet 0/1, y esto es puesto a  la configuracion la cual no ha sido configurada por completo.
+- **¿Por qué tardó tanto en aparecer la PDU HTTP?**
 
-### 🔼¿Qué código se utiliza en la tabla de enrutamiento para indicar una red conectada directamente?
+Es debido que primero debe establecerse una conexión tcp entre cliente y servidor para que el tráfico pueda comenzar.
 
- ✅Se usa el código (L)local,(C)connected, (S)static, (R)rip ,(M) mobile y (B)BGP respectivamente.
+- **¿Cómo se rotula la sección?**
 
-### 🔼¿Cuántas entradas de ruta están codificadas con un código C en la tabla de enrutamiento? 
+ Mediante un TCP. 
 
-#### ✅ Las entradas expuestas son las de tipo C mostradas a continuación:
--  192.168.0.0/24 is directly connected. GigabitEthernet 0/0/0/
--  192.168.0.0/32 is directly connected , GigabitEthernet 0/0/1.
+- **¿Se consideran confiables estas comunicaciones?** 
 
-### 🔼Qué tipos de interfaces están asociadas a las rutas con código C? 
+Sí, el TCP es un protocolo confiable a diferenca del UDP que no lo es.
 
-#### ✅Las interfaces asociadas son las siguientes:
--Gigaethernet 0/0/0
--Gigaethernet 0/0/1 
+- **¿Qué indicadores TCP se establecen en esta PDU?**
 
-### 🔼¿Cuál es el estado operativo de la interfaz G0/0/1? 
- 
-  ✅Conectado de momento (Is up connected)
- 
-### 🔼¿Cuál es la dirección de control de acceso a los medios (MAC) de la interfaz G0/0/1? 
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/dbcb9d49-398d-414b-99a0-556e6f24d226)
 
-✅Es la siguiente: 0060_6C92 (BIS 0060::6C83 6002)
+Se establecen ACK y PSH donde tiene el (1).
 
-### 🔼¿Cómo se muestra la dirección de Internet en este comando?
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/ac596107-3758-4eaa-8b08-342a254a7ee2)
 
- ✅ De la siguiente manera: 192.160.1.1/2
+- **¿En qué cambiaron los números de puerto y de secuencia?**
 
-## 📂Preguntas 
+Tanto el puerto de origen como el puerto de destino han cambiado de posición. Y el seq number sigue igual, y el flag están en la misma posición. Pero el ack ha cambiado(numero de reconocimiento).
 
-### 🔼1. Si la interfaz G0/0/1 se mostrará administratively down, ¿qué comando de configuración de interfaz usaría para activar la interfaz? 
+![image](https://github.com/Fx2048/COMU_TEAM/assets/151795724/3a781556-ead0-4f74-868b-637e486b0511)
 
-#### ✅ La configuración de las interfaces se realiza desde:
-1.Submodo de configuración de interfaces.
-2.Digitamos interface cuando nos encontramos en modo de configuracion global (lo cual cambiaría a  config if)
-3.Posteriormente, cambiamos al  comando "no shut" o "not shutdown" , porque este se habilita para cambiar interfaces.
-4.Ejecutamos.
-5.La interface debe activarse.
+- **¿Qué información aparece ahora en la sección TCP? ¿En qué se diferencian los números de puerto y de secuencia con respecto a las dos PDU anteriores?**
 
+Ahora se ha invertido el puerto de origen y de destino, y el ack ha aumentado a 234, el de seq number a 103, y el flag tiene los indicadores en ack y fin. 
 
-### 🔼2. ¿Qué ocurriría si hubiera configurado incorrectamente la interfaz G0/0/1 en el router con una dirección IP 192.168.1.2?
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/7513f8de-92c3-43e6-8972-61058f1d326c)
 
-✅La PC-A no podría hacer pin a PCB.Puntualmente, esto es debido a que la PCB está en una red diferente a la de PCA 
-que requiere del router del waterwall determinado para dirigir estos paquetes , la PC-A por su parte está 
-configurada para dirigir estos paquetes y utilizar solamente la dirección "IP 162 .168 .1.1" , para el 
-ruoter del waterwall predeterminado, pero; esta dirección no está asignada a ningún dsipositivo en la 
-LAN, asi que cualquier paquete que vaya  a ser enviado para su enrutamiento nunca llegará al 
-destino. 
+- **¿Se consideran confiables estas comunicaciones?**
+
+Sí, se considera que son confiables.
+
+- **¿Cuál es el valor en el campo de bandera?**
+
+El valor es de indicador  SYN.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/8b41625d-9ad9-445d-b30d-d78955482d5c)
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/b7848f03-f9b8-4474-9bcf-836f91152979)
+
+- **¿En qué cambiaron los números de puerto y de secuencia?**
+
+Se diferencian en que se ha invertido el puerto de destino y de origen, y ,también permanece el seq number y ,ha cambiado el ack number  y el flag de SYN, adicionó a ACK. 
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/88623eb2-584e-446e-b4bd-6fe13228a838)
+
+- **¿En qué se diferencian los números de puerto y secuencia de los resultados anteriores?**
+
+Se diferencian a los números anteriores dado que ha cambiado el número de puerto de origen, el puerto de destino,(invertidos) y el ack se mantuvo, y el seq number se cambió , y el flag se cambió su indicador a ACK. 
+
+- **¿Cuál es el mensaje del servidor?**
+
+El mensaje del servidor es WELCOME TO PT FTP SERVER.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/396adb79-a0df-4f6d-be83-163a6465b6fb)
+
+- **¿Qué es el protocolo de capa 4?**
+
+El protocolo de capa 4 es UDP.
+
+- **¿Se consideran confiables estas comunicaciones?**
+
+No son confiables.
+
+- **¿Por qué no hay números de secuencia y reconocimiento?**
+
+Porque udp no necesita ser una conexi´n confiable, por eso no tiene todos los valores que tcp tiene.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/87f1e59f-80b6-4fca-a689-89a77ee353a7)
+
+- **¿En qué cambiaron los números de puerto y de secuencia?**
+
+Se han invertido.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/455ee563-8d01-44fb-9eac-7843e3ff59c9)
+
+- **¿Cómo se llama la última sección de la PDU?**
+
+La última sección se llama DNS.
+
+- **¿Cuál es la dirección IP para el nombre multiserver.pt.ptu?**
+
+El IP para el multiserver.pt.ptu es: 192 .168. 1.254.
+
+- **¿Qué protocolo de la capa de transporte utiliza el tráfico de correo electrónico?**
+
+El protocolo que utiliza el tráfico de correo electrónico es el TCP.
+
+- **¿Se consideran confiables estas comunicaciones?**
+
+Si se consideran confiables.
+
+- **¿En qué cambiaron los números de puerto y de secuencia?**
+
+Tiene un ACK y un  SYN a diferencia del anterior, se invirtieron los puertos y el ack nnumber cambió, mientras que el seq number permanece.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/5d9992d6-a59f-491c-afd0-47f927732a70)
+
+- **¿En qué se diferencian los números de puerto y de secuencia con respecto a los dos resultados anteriores? ¿En qué se diferencian los números de puerto y de secuencia con respecto a las dos PDU anteriores?**
+
+Se ha invertido con respecto al anterior, los puertos, y el ack number se ha mantenido, y el seq number subió a 1, mientras que el flag cambió a ACK su indicador, y ya no tiene SYN, done ha mantenido el puerto de origen, pero cambió el flag quitandole el ACK.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/aaa8e942-f7be-4ece-803f-917b2ab5fe76)
+
+- **¿Qué protocolo de correo electrónico se relaciona con el puerto TCP 25?**
+
+El protocolo que se relaciona con el puerto 25  es el SMTP.
+
+- **¿Qué protocolo se relaciona con el puerto TCP 110?**
+
+EL protocolo que se relaciona con el puerto TPC 110 es el POP 3.
+

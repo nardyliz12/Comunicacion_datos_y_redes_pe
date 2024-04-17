@@ -1,5 +1,10 @@
 # Actividad 6: Crear una red con un switch y un router - Modo Físico
 
+### Objetivos 
+- Parte 1: Configurar la topología
+- Parte 2: Configurar los dispositivos y verificar la conectividad
+- Parte 3: Mostrar información del dispositivo
+  
 ## ENLACE A LA ACTIVIDAD 6 EN SOFTWARE 
 
 https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/tree/74c9a857ffd7e8f945fcead71c6494be21eb5da4/CISCO_PACKET_TRACER

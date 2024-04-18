@@ -41,6 +41,6 @@ Si no existieran los estándares de protocolo, podría haber una probabilidad de
 **3. Comparte las reglas de protocolo con tus compañeros de equipo. ¿Hay diferencias entre tus  protocolos y los de ellos? Si es así, ¿podrían estas diferencias producir malentendidos de los  mensajes?**
 Se usa protocolos estándar:
 
-Utilizar protocolos de mensajería establecidos como SMTP (Protocolo Simple de Transferencia de Correo), POP (Protocolo de Oficina de Correos) e IMAP (Protocolo de Acceso a Mensajes de Internet) para el envío y recepción de correos electrónico, ya que estos protocolos ya se encuentran netamente establecidos.
+Utilizar protocolos de mensajería establecidos como SMTP (Protocolo Simple de Transferencia de Correo), POP (Protocolo de Oficina de Correos) e IMAP (Protocolo de Acceso a Mensajes de Internet) para el envío y recepción de mensjes, ya que estos protocolos ya se encuentran netamente establecidos, pero si podrian haber malos entnedido habiendo un desorden en la jeraquia.
 
 

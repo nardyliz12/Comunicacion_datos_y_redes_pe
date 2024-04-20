@@ -11,4 +11,3 @@
 
 
 ### 1.- Realiza una configuración básica en el S1 y el S2.
-[ENLACE DRIVE](https://drive.google.com/file/d/15rAEoio1yNvA7w02ewi931LaT6Dx7kYT/view)

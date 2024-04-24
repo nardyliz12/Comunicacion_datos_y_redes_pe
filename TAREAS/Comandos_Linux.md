@@ -39,51 +39,50 @@ El contenido es una introducción a los conceptos básicos de la navegación en 
 
 - Colocar el comando pwd:
 
-![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/a94a3e9e-0129-425e-b05d-b8e0f2804566)
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/9157fa25-6d07-42f2-876d-dd1dfa87fe2a)
 
 - Para enumerar los archivos en el directorio de trabajo, usamos el ls comando.
 
-![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/4f33c949-33e4-40fe-a0e1-6e7a41419e99)
-
-Cuando colocamos el comando ls, no os enúmera el directorio, y eso puede deberse a una vinculación no correccta por parte del dispositivo.
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/affd64ca-2117-4cc5-9367-c874697f2f7b)
 
 ### cd
 
 - probemos esto:
 
-![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/b266132f-5c4c-457d-81d9-f8c4b5c0fe36)
-
-Una de haber ejecutado los comandos, nos sale  que "El fichero o directorio no existe", entonces al no exstir no nos muestra ninngun valor o información. 
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/68e128e5-a8f8-4650-b98a-283d286389db)
 
 - El "." La notación se refiere al directorio de trabajo en sí y la notación ".." se refiere al directorio principal del directorio de trabajo. Así es como funciona. Cambiemos nuevamente el directorio de trabajo a /usr/bin:
 
-![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/39709352-ff4d-4b13-851a-7b695738ba7d)
 
-Al no existir ningún tipo de direcctorio no nos proporciona el directorio, donde no podemos guardarlo.
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/14ff31c0-fc35-413d-96ab-b17565580613)
+
 
 - Bien, ahora digamos que queremos cambiar el directorio de trabajo a /usr/bincuyo padre es /usr. Podríamos hacerlo de dos maneras diferentes. Primero, con una ruta absoluta:
 
-![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/6f102314-f243-4530-8ade-51b9a9c9cf10)
 
-Seguimos mantiendo el msmo problema.
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/316a2a44-d053-437b-8b18-31e3a470ef28)
+
 
 - O, con una ruta de acceso relativa:
 
-![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/05237df4-5fff-4529-a30b-d373273011dc)
 
-Considerando los resultados correspondientes, puedo decir que el programa esta presentando problemas ya que nos indica que el comando cd.. no funciona lo cual no deberia ser asi.
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/369f55f3-6105-48ab-9f4b-d614c556e43e)
+
 
 - Asimismo, podemos cambiar el directorio de trabajo de /usra /usr/binde dos formas diferentes. Primero usando una ruta de acceso absoluta, o con una ruta de acceso relativa:
 
-![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/0c2f584e-1542-4965-85a6-9709c1e9c14d)
 
-Al no presentar un directorio existente podemos obtener resultados concisos.
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/0f0a0821-5551-4a25-a973-e83f3a700cc8)
+
 
 - Ahora bien, hay algo importante que debemos señalar aquí. En la mayoría de los casos, podemos omitir el "./". Esta implicado. Mecanografía:
 
-![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/42cb4eef-dea3-4d64-bbcb-0a3e36e63aa7)
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/70a94a38-4ede-4be8-aaa1-69139146ec3f)
+
 
 ## Looking Around
+
+
 ## A Guided Tour
 ## Manipulation Files
 ## Working with Commands

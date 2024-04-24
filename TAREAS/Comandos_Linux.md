@@ -81,9 +81,84 @@ El contenido es una introducción a los conceptos básicos de la navegación en 
 
 
 ## Looking Around
+La idea de explorar el sistema Linux mediante la navegación por sus directorios, es utilizando comandos básicos de la línea de comandos como `ls`, `less` y `file`. Donde nos invita al lector a familiarizarse con estas herramientas antes de embarcarse en la exploración del sistema. `ls` se utiliza para listar los archivos y directorios en el directorio actual, `less` permite ver el contenido de archivos de texto de manera paginada y `file` se emplea para clasificar el contenido de un archivo en función de su tipo. En resumen, ejercicio prepara al lector para comenzar a explorar el sistema Linux utilizando estos comandos básicos, lo que le permitirá aprender más sobre la estructura y el contenido del sistema operativo a medida que avanza en su viaje.
 
+### es
+El ls comando se utiliza para enumerar el contenido de un directorio. Probablemente sea el comando de Linux más utilizado. Se puede utilizar de varias maneras diferentes. Aquí hay unos ejemplos:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/9b1f777f-6893-496c-8d98-1b67f994d3f6)
+
+### Ejemplos de comandos ls 
+
+- **ls -a**
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/17a665a3-b273-49a2-a7c9-115d3f47b778)
+
+- ** ls -l**
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/4307a05d-185e-48c0-8492-39859beb51a7)
+
+- **ls /bin**
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/25ab283c-7b25-48dd-8c68-35a44dce28da)
+
+- **ls -l /etc /bin**
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/8c5c9109-541e-4f95-b284-2dc342d047cb)
+
+- directorio **bin**: hay un total de 92184 archivos
+- directorio **etc**:  hay un total de 116 archivos.
+
+  ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/a1cd03b5-0ff2-4c7f-a569-893b37b974b2)
+
+### Una mirada más cercana al formato largo
+- Nombre del archivo: ADVANCE 197121
+- Hora de modificación: Nov 20 18:32
+- Tamaño: No lo muestra.
+- Grupo: No lo muestra
+- Dueño: en este caso no lo evidencia.
+- Permisos de archivos: tampoco se evidencia.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/db0a7f46-72bf-4005-b134-5543b89c3741)
+
+### menos
+less es un programa que nos permite visualizar archivos de texto. Esto es muy útil ya que muchos de los archivos utilizados para controlar y configurar Linux son legibles por humanos.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/7fa8f657-0f91-4065-8b26-e246fd33dedc)
+
+### archivo
+Mientras deambulamos por nuestro sistema Linux, resulta útil determinar qué tipo de datos contiene un archivo antes de intentar verlo. Aquí es donde fileentra en juego el comando. file Examinará un archivo y nos dirá qué tipo de archivo es.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/a79fc66a-2753-4a66-be3c-75709523882d)
 
 ## A Guided Tour
+El texto sugiere hacer un recorrido por diferentes directorios del sistema Linux para explorar su contenido. Para cada directorio mencionado, se recomienda realizar las siguientes acciones:
+
+1. Utilizar el comando `cd` para cambiar al directorio mencionado.
+2. Emplear el comando `ls` para listar el contenido del directorio y así explorar qué archivos y subdirectorios contiene.
+3. En caso de encontrar archivos interesantes, utilizar el comando `file` para determinar su contenido y tipo.
+4. Si los archivos son de texto, se sugiere utilizar el comando `less` para ver su contenido de manera paginada.
+
+- **/**
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/910b7df1-4d5b-4439-a767-a4a74e37d735)
+
+- **/boot**
+
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/ab8aca21-fcb0-4524-9f06-d7b179e943f5)
+
+
+- **/etc**
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/64c9b573-529d-4fa6-bc1e-26b811054b6c)
+
+- **/bin, /usr/bin**
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/4831dd37-a9cf-41f0-a3bd-fa9d8673c1a4)
+
+- **/sbin, /usr/sbin**
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/42e9831b-bb40-422c-a1d9-4e995581884c)
+
 ## Manipulation Files
 ## Working with Commands
 ## I/O Redirection

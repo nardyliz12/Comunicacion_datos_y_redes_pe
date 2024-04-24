@@ -94,7 +94,7 @@ El ls comando se utiliza para enumerar el contenido de un directorio. Probableme
 
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/17a665a3-b273-49a2-a7c9-115d3f47b778)
 
-- ** ls -l**
+- **ls -l**
 
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/4307a05d-185e-48c0-8492-39859beb51a7)
 
@@ -154,9 +154,11 @@ El texto sugiere hacer un recorrido por diferentes directorios del sistema Linux
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/64c9b573-529d-4fa6-bc1e-26b811054b6c)
 
 - **/bin, /usr/bin**
+- 
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/4831dd37-a9cf-41f0-a3bd-fa9d8673c1a4)
 
 - **/sbin, /usr/sbin**
+  
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/42e9831b-bb40-422c-a1d9-4e995581884c)
 
 ## Manipulation Files

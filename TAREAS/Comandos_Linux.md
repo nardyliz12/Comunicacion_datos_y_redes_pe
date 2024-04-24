@@ -154,14 +154,57 @@ El texto sugiere hacer un recorrido por diferentes directorios del sistema Linux
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/64c9b573-529d-4fa6-bc1e-26b811054b6c)
 
 - **/bin, /usr/bin**
-- 
+
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/4831dd37-a9cf-41f0-a3bd-fa9d8673c1a4)
 
 - **/sbin, /usr/sbin**
   
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/42e9831b-bb40-422c-a1d9-4e995581884c)
 
+- **/usr**
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/9df2dd0c-c339-4a91-9d53-d0f7470224c9)
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/0258cce3-4d96-49ff-93d1-20fbac8d0b97)
+
+- **/usr/local**
+
+  ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/b14221fd-2d18-44be-92f4-73346cae869b)
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/c38c8d04-1361-46cd-b6b6-c211ab1115d1)
+
+- **/var**
+
+ ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/0fca6915-d341-4663-836d-ba389dc0f837)
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/477028f8-f755-4e4f-ba5a-04712286e067)
+
 ## Manipulation Files
+El texto presenta cuatro comandos básicos en Linux: `cp`, `mv`, `rm` y `mkdir`, utilizados para copiar, mover, eliminar y crear archivos y directorios. Aunque las tareas simples pueden ser más fáciles con un administrador de archivos gráfico, estos comandos ofrecen poder y flexibilidad para realizar tareas más complejas de manera eficiente en la línea de comandos.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/b0ec645c-38e9-4c61-a521-8c1cb81da1d8)
+
+### CP
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/e84fc75c-1621-4196-a3fd-5087f84a323a)
+
+- También se puede utilizar para copiar varios archivos (y/o directorios) a un directorio diferente:
+  
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/f2bf224e-3a61-475d-81e2-a9c148f6f0f4)
+
+### mv
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/434c647f-dc39-4c69-8431-85fc60a33dc1)
+
+- Para mover archivos (y/o directorios) a un directorio diferente:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/e685dd02-03c6-4690-b3c5-eeca66249b25)
+
+### habitación
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/1cf7bd26-c618-45a3-80a5-932209b893b6)
+
+### mkdir
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/72bd0a58-aff4-4a65-b52a-f10fe9b15358)
+
 ## Working with Commands
 ## I/O Redirection
 ## Expansion

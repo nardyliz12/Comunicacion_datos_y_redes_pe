@@ -206,7 +206,46 @@ El texto presenta cuatro comandos básicos en Linux: `cp`, `mv`, `rm` y `mkdir`,
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/72bd0a58-aff4-4a65-b52a-f10fe9b15358)
 
 ## Working with Commands
+
+El texto introduce cuatro comandos relacionados con la identificación y la información sobre otros comandos en Linux: `type`, `which`, `help` y `man`. Estos comandos ayudan a determinar el tipo de comando que se está utilizando, ya sea un programa ejecutable, un comando interno del shell, una función de shell o un alias. Esto es útil para comprender mejor cómo funcionan los comandos y cómo se pueden utilizar en diferentes contextos en el sistema operativo Linux.
+### type
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/87b3d7e1-faf7-4f89-af33-bdced5b80b70)
+
+### wich
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/cea67045-b043-4690-a72c-3a6a01c03d6d)
+
+### Ayuda
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/f94c03ca-ae31-4f8d-bb1f-59af5b2ccae2)
+
+### --ayuda
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/2ae15f37-6f03-45d3-acef-a5dc89be8ad4)
+
+### hombre
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/73b737f8-e613-4409-a147-6ee7b8bbc26f)
+
 ## I/O Redirection
+
+Se explica el concepto de redirección de entrada/salida en la línea de comandos, una característica poderosa que permite cambiar dónde se envía la salida de un comando. Se menciona que la mayoría de los programas de línea de comandos envían su salida al estándar de salida por defecto, que por lo general se muestra en la pantalla. Sin embargo, esto puede ser modificado usando la notación especial ">" para redirigir la salida a un archivo en lugar de mostrarla en la pantalla. Esto proporciona flexibilidad al usuario para manejar y almacenar la salida de los comandos de acuerdo a sus necesidades.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/8bfa3299-a199-429f-9813-3c6124f3e3c5)
+
+- Cada vez que se repite el comando anterior, file_list.txtse sobrescribe desde el principio con la salida del comando ls. Para agregar los nuevos resultados al archivo, usamos ">>" así:
+
+ ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/96b38fb8-6ea4-4fca-9e63-2e0167b99a6c)
+ 
+### Entrada estándar
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/150eb5ad-f34d-4185-86c3-65738c5073e1)
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/aa89d686-edcd-4e98-9864-fd63b01c180a)
+
+### Tuberias
+- **ls -l | less**
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/8a74000f-4919-464e-8625-34e34c52bfa4)
+
 ## Expansion
 ## Permissions
 ## Job Control

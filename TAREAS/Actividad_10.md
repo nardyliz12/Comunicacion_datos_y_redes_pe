@@ -53,3 +53,34 @@ Si es la misma dirección IP que se muestra al inicio con el comando ping de 72.
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/56d9f64f-99e4-40d5-a99a-84caf0eccd1c)
 
 El nombre que nos da como resultado es **redirect-ns.cisco.com.**
+
+##  Identifica servidores de correo utilizando el comando nslookup
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/e610b60b-1a0f-4318-b79d-685e363b3852)
+
+- **¿Cuáles son los nombres de los servidores de correo de Cisco identificados en el campo mailexchanger?**
+
+Son los siguientes:
+- rcdn-mx-01.cisco.com
+- alln-mx-01-cisco.com
+- aer-mx-01.cisco.com
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/8428aaf8-f09b-46a8-9021-12a9b7b9cff6)
+
+
+### Preguntas
+
+- **Si la universidad no tuviera un servidor DNS, ¿qué efectos tendría esto en el uso de Internet?**
+
+Tendria muchos efectos tales como tener dificultad para acceder a sitios web por nombres de dominio, tener dependencia de direcciones IP conocidas lo que seria poco práctico y dificil de gestiona a medida que aumenta la cantidad de sitios web en Internet, tambien llegaria a tener problemas de conectividad con servicos en la nube.
+
+- **Algunas empresas no dedican un solo servidor para el DNS. Por el contrario, el servidor DNS también proporciona otras funciones. ¿Qué funciones crees que se pueden incluir en un servidor DNS? Usa el comando ipconfig /all para ayudarte con esto**
+
+**Puede incluir funciones como:**
+
+- Configuración IP de windows
+- Adaptador de Ethernet Ethernet
+- Adaptador de LAN inalámbrica Conexión de área local* 12
+- Adaptador de LAN inalámbrica Conexión de área local* 14
+- Adaptador de lan inalámbrica Wi-Fi
+- Adaptador de Ethernet Conexión de red Bluetooth

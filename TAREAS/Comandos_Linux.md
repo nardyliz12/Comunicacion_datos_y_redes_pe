@@ -2,7 +2,7 @@
 
 ## Contenido:
 
-## What is "the Shell?
+## I. What is "the Shell?
 
 El "shell" es un programa que actúa como interfaz entre el usuario y el sistema operativo, permitiendo la ejecución de comandos y la interacción con el sistema. Por otro lado, la "terminal" es un programa llamado emulador de terminal que proporciona una ventana de texto donde los usuarios pueden interactuar con el shell, ejecutar comandos y realizar tareas en el sistema operativo a través de la línea de comandos. Ambos conceptos son fundamentales para la interacción con sistemas Unix y Linux a través de la línea de comandos.
 
@@ -33,7 +33,7 @@ Además de usar el mouse para desplazar el contenido de la ventana del terminal,
 
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/e3389b5c-432d-46c4-bb74-64871dcdc6e7)
 
-## Navigation
+## II. Navigation
 
 El contenido es una introducción a los conceptos básicos de la navegación en sistemas Linux a través de la línea de comandos. Se centra en la organización del sistema de archivos en Linux, que se basa en una estructura jerárquica de directorios, similar a la estructura de carpetas en Windows, donde se mencionan tres comandos fundamentales para la navegación en la línea de comandos: `pwd` (print working directory) para imprimir el directorio de trabajo actual, `cd` (change directory) para cambiar de directorio y `ls` para listar los archivos y directorios en el directorio actual. Además, se explica la diferencia entre la organización del sistema de archivos en Linux y Windows, destacando que Linux no utiliza letras de unidad y tiene un único árbol de directorios. Se utiliza la metáfora de un laberinto para representar el sistema de archivos, donde estamos ubicados en un directorio y podemos ver sus archivos y subdirectorios, así como la ruta hacia el directorio principal y los subdirectorios.
 
@@ -80,7 +80,7 @@ El contenido es una introducción a los conceptos básicos de la navegación en 
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/70a94a38-4ede-4be8-aaa1-69139146ec3f)
 
 
-## Looking Around
+## III. Looking Around
 La idea de explorar el sistema Linux mediante la navegación por sus directorios, es utilizando comandos básicos de la línea de comandos como `ls`, `less` y `file`. Donde nos invita al lector a familiarizarse con estas herramientas antes de embarcarse en la exploración del sistema. `ls` se utiliza para listar los archivos y directorios en el directorio actual, `less` permite ver el contenido de archivos de texto de manera paginada y `file` se emplea para clasificar el contenido de un archivo en función de su tipo. En resumen, ejercicio prepara al lector para comenzar a explorar el sistema Linux utilizando estos comandos básicos, lo que le permitirá aprender más sobre la estructura y el contenido del sistema operativo a medida que avanza en su viaje.
 
 ### es
@@ -131,7 +131,7 @@ Mientras deambulamos por nuestro sistema Linux, resulta útil determinar qué ti
 
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/a79fc66a-2753-4a66-be3c-75709523882d)
 
-## A Guided Tour
+## IV. A Guided Tour
 El texto sugiere hacer un recorrido por diferentes directorios del sistema Linux para explorar su contenido. Para cada directorio mencionado, se recomienda realizar las siguientes acciones:
 
 1. Utilizar el comando `cd` para cambiar al directorio mencionado.
@@ -205,7 +205,7 @@ El texto presenta cuatro comandos básicos en Linux: `cp`, `mv`, `rm` y `mkdir`,
 ### mkdir
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/72bd0a58-aff4-4a65-b52a-f10fe9b15358)
 
-## Working with Commands
+## V. Working with Commands
 
 El texto introduce cuatro comandos relacionados con la identificación y la información sobre otros comandos en Linux: `type`, `which`, `help` y `man`. Estos comandos ayudan a determinar el tipo de comando que se está utilizando, ya sea un programa ejecutable, un comando interno del shell, una función de shell o un alias. Esto es útil para comprender mejor cómo funcionan los comandos y cómo se pueden utilizar en diferentes contextos en el sistema operativo Linux.
 ### type
@@ -239,13 +239,254 @@ Se explica el concepto de redirección de entrada/salida en la línea de comando
  ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/96b38fb8-6ea4-4fca-9e63-2e0167b99a6c)
  
 ### Entrada estándar
+
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/150eb5ad-f34d-4185-86c3-65738c5073e1)
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/aa89d686-edcd-4e98-9864-fd63b01c180a)
 
 ### Tuberias
+
 - **ls -l | less**
+  
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/8a74000f-4919-464e-8625-34e34c52bfa4)
 
-## Expansion
-## Permissions
+## VI. Expansion
+Aqui explica el proceso de expansión que realiza el shell antes de ejecutar un comando. Cuando escribimos una línea de comando y presionamos Enter, el shell lleva a cabo la expansión de ciertos caracteres o secuencias de caracteres antes de procesar el comando. Se menciona que caracteres simples como "*" pueden tener significados especiales para el shell durante este proceso de expansión. Luego, se ilustra este concepto usando el comando "echo", que imprime sus argumentos de texto en la salida estándar.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/ed6d1292-ac07-4903-a862-c7007bf07ea9)
+
+- Eso es bastante sencillo. Cualquier argumento pasado a echose muestra. Probemos con otro ejemplo:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/c61327a9-d4fe-476d-9ea7-ab4afc304996)
+
+### Expansión de nombre de ruta
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/a9f0adca-1980-4217-98dc-07379d76dc26)
+
+- podríamos realizar las siguientes ampliaciones:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/88b5dd60-803b-4ba6-9c15-43d0c775c530)
+
+- Y:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/c0d70f0c-a3b0-4845-b0b3-8e4e27648ca3)
+
+- o incluso:
+  
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/61cdf470-ac12-4cbc-b81f-0e51b64c654b)
+
+- y mirando más allá de nuestro directorio de inicio:
+  
+ ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/b209e01f-9a59-4684-835c-9e419a1d8008)
+
+### Expansión de tilde
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/7df756b9-a49d-420b-b62a-58120002084a)
+
+- Si el usuario "foo" tiene una cuenta, entonces:
+  
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/baa16fc7-d8d0-4e05-9c2b-a6a143ce4683)
+
+### Expansión aritmética
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/847b524c-d67d-411f-a3cd-530b6066dbb8)
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/5190c9e4-3195-4154-bf00-8e11b9a74bdd)
+
+- Otra forma:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/f82f117a-ca8d-4fec-bd8f-5a946915555e)
+
+- A continuación se muestra un ejemplo que utiliza los operadores de división y resto. Observe el efecto de la división de números enteros:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/3fe65a32-c4d4-4e8e-9cf6-e9e666188806)
+
+### Expansión de llaves
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/f4c2ab27-7fd1-4cf5-9ef7-2a289f0ac984)
+
+- A continuación se muestra un ejemplo que utiliza un rango de números enteros:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/cd0380eb-72b7-46a7-b201-e44f747bcb51)
+
+- Una serie de letras en orden inverso:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/7c01a145-4597-49bc-a212-50846550e63e)
+
+- Las expansiones de llaves pueden estar anidadas:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/b09b811c-c777-4bc2-b5fa-bba9294d1bfd)
+
+- En lugar de eso, podríamos hacer esto:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/bb57e885-5f35-43b9-b062-79bfcdf425f1)
+
+### Expansión de parámetros
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/8ecc812f-98db-460c-9355-7e6e9808d385)
+
+- Para ver una lista de variables disponibles, intente esto:
+- **printenv | less**
+  
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/3b85fd2b-52a0-4cd0-bf24-b689359aaffa)
+
+- Con la expansión de parámetros, si escribimos mal el nombre de una variable, la expansión seguirá teniendo lugar, pero dará como resultado una cadena vacía:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/88f3b851-8ad9-4125-9b8e-a9be57fb5cb6)
+
+No muestra ningún resultado.
+
+### Sustitución de comando
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/1e1aa1fa-29b1-4c7d-bc5b-9ff13e3ce62a)
+
+- Uno inteligente dice algo como esto:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/1a3bb2bc-a93a-4c8c-b841-d9195a20e212)
+
+- Se pueden utilizar tuberías enteras (solo se muestra una salida parcial):
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/5a7758fb-c8a6-4fbb-8f8e-64bea3784a99)
+
+- Utiliza comillas invertidas en lugar del signo de dólar y paréntesis:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/f63163fa-bce1-4a91-8a67-8c524cef8239)
+
+### Citando
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/8abf0428-1e4a-419e-b498-958ab6fe0d9c)
+
+- o:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/9edf58b6-633e-4cde-aeef-6ce6fcee3dec)
+
+### Doble comillas
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/8b892df0-c464-4592-97f8-fa033726c393)
+
+- Al utilizar comillas dobles, podemos detener la división de palabras y obtener el resultado deseado; Además, incluso podemos reparar el daño:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/fce86d57-e610-480b-b05e-bb36a775def4)
+
+- Recuerde, la expansión de parámetros, la expansión aritmética y la sustitución de comandos todavía se realizan entre comillas dobles:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/db16b8af-cdb0-4ffc-9457-0719eef4f38c)
+
+- En nuestro ejemplo anterior, vimos cómo la división de palabras parece eliminar espacios adicionales en nuestro texto:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/fd24dfa2-9992-423c-9985-5d8a9551a876)
+
+-  Si agregamos comillas dobles:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/5a6ceb51-e374-4674-9e81-588bd8234e2f)
+
+- Considera lo siguiente:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/3e7339b6-c76a-4e2d-b8a9-a75257d78ab5)
+
+### Comillas simples
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/a42b7a06-9c21-459b-9bb3-c14f1fa90453)
+
+### Personajes que escapan
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/2914b4af-f722-4bb6-8060-695bc6495738)
+
+- Para incluir un carácter especial en un nombre de archivo podemos hacer esto:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/c5d2a31a-049a-44ab-98e3-0e1ccfdd1c79)
+
+### Más trucos de barra invertida
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/6e50e983-f376-4fef-b181-e7ed747bbb50)
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/283483e8-8f7b-44d2-b179-2b27c0571e2b)
+
+- Usar el echocomando con la opción -e nos permitirá demostrar:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/2225cd73-977f-4c70-93dc-44598948dd8e)
+
+## VII. Permissions
+
+Explica que los sistemas tipo Unix, como Linux, permiten la operación simultánea de múltiples usuarios. Esto se originó en entornos donde las computadoras eran centrales y compartidas por muchos usuarios. Para evitar conflictos, se implementaron comandos como chmod, su, sudo, chown y chgrp, que permiten controlar los permisos de acceso a archivos y la administración de usuarios y grupos.
+
+### Permisos de archivos
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/278e6da8-8c9b-4238-8cb3-79d6bc889130)
+
+### chmod
+
+- Por ejemplo, si quisiéramos configurar some_filepermisos de lectura y escritura para el propietario, pero quisiéramos mantener el archivo privado de otros, haríamos lo siguiente:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/cf0510b9-8c3c-4182-8acd-26d24d749ece)
+
+### Convertirse en superusuario por un corto tiempo
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/85aad13f-754d-4fea-a652-76e31d0b1e99)
+
+- Después de ingresar el comando, se le solicita al usuario su propia contraseña en lugar de la del superusuario:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/f2fc2fa6-b214-49a1-8777-14d46bce956a)
+
+No identifica el comando.
+
+- Todavía es posible un shell raíz sudousando la opción "-i":
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/5a4f1b06-5542-49f8-acc4-9415a3c458f3)
+
+### Cambiar la propiedad del archivo
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/fa5be534-1105-4902-b9cf-fa08a2d648ba)
+
+### Cambiar la propiedad del grupo
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/0a93287a-b44b-4249-a974-3969a361764d)
+
 ## Job Control
+
+Aqui explora la naturaleza de multitarea de Linux y cómo se controla a través de la interfaz de línea de comandos. Aunque Linux ejecuta múltiples procesos aparentemente simultáneos, en realidad, un solo núcleo de procesador solo puede ejecutar un proceso a la vez. El kernel de Linux administra estos procesos para darles a cada uno un turno en el procesador. Se presentan varios comandos para controlar los procesos, como ps para listar los procesos, kill para enviar señales a los procesos (a menudo para "matar" un proceso), jobs para listar los procesos propios, y bg y fg para poner un proceso en segundo plano o primer plano, respectivamente.
+
+### Un ejemplo práctico
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/b069fd8e-8e17-4109-8292-104c5cb3aed3)
+
+Nos indica que no reconoce el comando.
+
+### Poner un programa en segundo plano
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/2a3114e6-cbe7-41ae-8e9d-718850e328b2)
+
+- El proceso todavía existe, pero está inactivo. Para reanudar el proceso en segundo plano, escriba el bgcomando (abreviatura de fondo). Aquí hay un ejemplo:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/c5b55623-173b-411d-a5c0-8c68db8ee8fd)
+
+No reconoce el comando.
+
+### Listado de procesos en ejecución
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/643196c3-a07d-40fc-9b72-53ead056646d)
+
+### Matar un proceso
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/cb46a503-ba29-4a5f-9432-73029259ee05)
+
+### Un poco más sobre matar
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/6b74c168-6066-4dfe-96e6-39327da01137)
+
+- Utilice el pscomando para obtener la identificación del proceso (PID) del proceso que queremos finalizar.
+- Emita un killcomando para ese PID.
+- Si el proceso se niega a terminar (es decir, ignora la señal), envíe señales cada vez más duras hasta que termine.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/c77f6f3f-0c21-4155-b5ad-1157f001dbf3)
+
+El comanddo no realiza el procesamiento.
+
+- En la práctica real, es más común hacerlo de la siguiente manera ya que la señal enviada por defecto killes SIGTERM y killtambién puede usar el número de señal en lugar del nombre de la señal:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/e5d7ab49-13bd-4aeb-a775-a9b938a0bd8a)
+
+- Luego, si el proceso no termina, fuercelo con la señal SIGKILL:
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/f17ae7d8-6696-49ce-9816-f7ab317e01a7)
+
+El comando no logra procesar los archivos.

@@ -441,7 +441,7 @@ No identifica el comando.
 
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/0a93287a-b44b-4249-a974-3969a361764d)
 
-## Job Control
+## VIII. Job Control
 
 Aqui explora la naturaleza de multitarea de Linux y cómo se controla a través de la interfaz de línea de comandos. Aunque Linux ejecuta múltiples procesos aparentemente simultáneos, en realidad, un solo núcleo de procesador solo puede ejecutar un proceso a la vez. El kernel de Linux administra estos procesos para darles a cada uno un turno en el procesador. Se presentan varios comandos para controlar los procesos, como ps para listar los procesos, kill para enviar señales a los procesos (a menudo para "matar" un proceso), jobs para listar los procesos propios, y bg y fg para poner un proceso en segundo plano o primer plano, respectivamente.
 

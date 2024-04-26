@@ -37,7 +37,7 @@ Una empresa necesita diseñar una red segura que conecte tres sucursalesubicadas
 
 #### Parte 2: Configuración de VNP de red
 
-### Código python
+##### Código python
 
 #### Preguntas adicionales:
 
@@ -72,7 +72,7 @@ Una empresa de streaming de video experimenta interrupciones frecuentes en laent
 
 #### Parte 1: Implementación de caché de rd con python
 
-#### Código python:
+##### Código python:
 
 #### Parte 2: Selección del protocolo de transporte
 
@@ -90,7 +90,7 @@ Una empresa de streaming de video experimenta interrupciones frecuentes en laent
 
 - Usa wireshark para caprurar paquetes de red y analiza el tráfico espcífico de video para identificar patrones de uso y posibles cuellos de botella.
 
-## PROBLEMA 3: Simulavión de ataque y respuesta
+## PROBLEMA 3: Simulación de ataque y respuesta
 
 ### Escenario:
 
@@ -116,7 +116,7 @@ Eres el administrador de seguridad de una red corporativa y has notado unaumento
 
 #### Parte 1: Detección de ARP Spoofing con Python
 
-#### Código python:
+##### Código python:
 
 #### parte 2: Mitigaciónn del Ataque
 

@@ -2,23 +2,33 @@
 
 ##### Aspectos básicos de la actividad
 
-Sean los siguientes conceptos dados en clase: 5-4-3 rule Ad hoc wireless network Association Autonegotiation Band Basic service setBSSID Cellular network Chips Co-channel interference Contention-free period Coveragearea Crossover cable Cross-talk CSMA/CA CSMA/CD Distribution system DSSS Dumbterminal ESSID Ethernet repeater Extended service set EUI-48 EUI-64 Fast Ethernet FHSSFlooding Full-duplex mode Gigabit Ethernet Half-duplex mode Hotspot Independent basicservice set IEEE standards Initialization vector Jam signal LAN edge MAC table MetroEthernet MICHAEL MIMO-OFDM Modulation OFDM Power over Ethernet ProbePseudonoise RJ45 jack Roaming SIM card Simplex mode SSID T-connector TerminatorThickNet Thinnet TKIP Trunk UTP VLAN VPN WAP WEP Wireless ad hoc network WLANWLAN frame WNIC WPA WPA2 XOR
+Sean los siguientes conceptos dados en clase: 5-4-3 rule Ad hoc wireless network Association Autonegotiation Band Basic service setBSSID Cellular network Chips Co-channel interference Contention-free period Coveragearea Crossover cable Cross-talk CSMA/CA CSMA/CD Distribution system DSSS Dumbterminal ESSID Ethernet repeater Extended service set EUI-48 EUI-64 Fast Ethernet FHSSFlooding Full-duplex mode Gigabit Ethernet Half-duplex mode Hotspot Independent basicservice set IEEE standards Initialization vector Jam signal LAN edge MAC table MetroEthernet MICHAEL MIMO-OFDM Modulation OFDM Power over Ethernet ProbePseudonoise RJ45 jack Roaming SIM card Simplex mode SSID T-connector TerminatorThickNet Thinnet TKIP Trunk UTP VLAN VPN WAP WEP Wireless ad hoc network WLANWLAN frame WNIC WPA WPA2 XOR.
 
 ## PROBLEMA 1: Diseño y Simulación de una red metro Ethernet con QoS
 
 ### Contexto: 
 
-Una empresa necesita diseñar una red Metro Ethernet para conectar variassucursales en una área metropolitana. Se requiere calidad de servicio (QoS) para priorizarel tráfico de voz sobre IP (VoIP) sobre el tráfico regular de datos.
+Una empresa necesita diseñar una red Metro Ethernet para conectar varias sucursales en una área metropolitana. Se requiere calidad de servicio (QoS) para priorizarel tráfico de voz sobre IP (VoIP) sobre el tráfico regular de datos.
 
 #### Requisitos:
 
-● Explique cómo utilizaría VLAN y Trunk para segmentar y gestionar el tráfico en lared.
+● **Explique cómo utilizaría VLAN y Trunk para segmentar y gestionar el tráfico en la red.**
 
-● Diseñe una política de QoS que utilice Ethernet y VLAN tags para garantizar laprioridad del tráfico de VoIP.
+Los VLANs (Virtual Local Area Networks) se pueden utilizar para segmentar la red en grupos más pequeños, independientes y administrables, por ejemplo: podriamos tener una VLAN para cada sucursal dentro de la empresa, donde esto no solo mejora la seguridad, sino que también ayuda a reducir el tráfico de la red al limitar las transmisiones de broadcast a su propia VLAN. Mientras tanto el Truking es una técnica que se utiliza para llevar el tráfico de varias VLANs a través  de un solo enlace físico (Trunk). Si hacemos referencia a los switches de la red se puede utilizar el protocolo de IEEE 802.1Q es el estándar que define cómo se implementa el trunking de VLAN en una red Ethernet para asi, este pueda etiquetar los paquetes con su correspondiente ID de VLAN antes de enviarlos a través del trunk, donde al llegar al otro extremo, el switch puede leer la etiqueta y dirigir el paquete a la VLAN correcta.
 
-● Simule el entorno utilizando software de simulación de redes y describa cómo losconceptos de Fast Ethernet, Gigabit Ethernet, y Full-duplex mode se aplican en estediseño.
+● **Diseñe una política de QoS que utilice Ethernet y VLAN tags para garantizar la prioridad del tráfico de VoIP.**
 
-- Para tu presentación y código a presentar puedes utilizar:
+La Calidad de Servicio (QoS) es muy escencial para garantizar que el tráfico de VoIP tenga una prioridad sobre el tráfico de datos regulares, donde esto se puede lograr utilizando una de las técnicas que esta basado en la "priorización en etiquetas", donde este asigna una alta prioridad a los paquetes de VoIP. En el caso de una red Ethernet se puede utilizar la funcionalidad de "clase de servicio" (CoS) que se encuentra disponible en las etiquetas VLAN (IEEE 802.1Q). EL CoS en la etiqueta de VLAN tiene un valor de 3 bits, lo que significa que puede llegar a tener hasta 8 niveles de prioridad, por lo que, se puede configurar la red para que todos los paquetes de VoIP sean etiquetados con un valor de CoS mas alto, asegurando que se les dé prioridad durante la transmisión.
+
+● **Simule el entorno utilizando software de simulación de redes y describa cómo los conceptos de Fast Ethernet, Gigabit Ethernet, y Full-duplex mode se aplican en estediseño.**
+
+Los conceptos mencionados para describir se refiere na las tecnologías y modos de operación en que se pueden utilizar dentro de una red.
+
+- **Fast Ethernet (100BASE-T):** Es una versión de Ethernet que soporta velocidasdes de datos hasta 100 Mbps.
+- **Gigabit Ethernet (1000BASE-T):** Es una versión más rápida de Ethernet  que soporta grandes velocidades de datos de hasta 1000 Mbps (1 Gbps), donde es recomendable para el enlace troncal de la red que necesita aveces una alta capacidad de transmisión de datos.
+- **Full-duplex mode:** Es un modo de comunicación donde los atos pueden ser enviados y recibidos al mismo tiempo, lo que efectivamente duplica la capacidad de transmisión de los datos del enlace, además, es especialmente útil para el tráfico de VoIP que requiere una comunicación bidirrecional constante.
+
+- *Para tu presentación y código a presentar puedes utilizar:*
 
 #### Parte 1: Diseño de red utilizando VLANs y troncales
 
@@ -39,7 +49,7 @@ Una empresa necesita diseñar una red Metro Ethernet para conectar variassucursa
 ##### Código Python:
 
 #### Parte 3: Simulación y análisis
-- Utilizar herramientas de simulación o scripts adicionales en Python para simular el tráfico ymedir la efectividad de las políticas de QoS. Aquí, se podría usar scapy para generar tráficode VoIP y de datos, y observar la priorización basada en los DSCP tags asignados a lospaquetes.
+- Utilizar herramientas de simulación o scripts adicionales en Python para simular el tráfico y medir la efectividad de las políticas de QoS. Aquí, se podría usar scapy para generar tráficode VoIP y de datos, y observar la priorización basada en los DSCP tags asignados a los paquetes.
 
 ## PROBLEMA 2: Implementación de seguridad en WLAN con tecnología MIMO-OFDN
 

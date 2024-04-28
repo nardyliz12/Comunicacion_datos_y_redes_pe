@@ -76,7 +76,7 @@ def get_content(path):
         content_cache[path] = origin_content
         return origin_content
 ````
-# Resultado
+### Resultado
 ````
 C:\Users\PROPIETARIO\PycharmProjects\pythonProject\venv\Scripts\python.exe C:\Users\PROPIETARIO\PycharmProjects\pythonProject\main.py 
 
@@ -85,7 +85,7 @@ Process finished with exit code 0
 ````
 
 
-# Codificación Análisis
+### Codificación Análisis
 ````
 Simulación de datos:
 Se agregaron diccionarios para simular el contenido en el servidor de origen, la ubicación geográfica de los usuarios y las latencias entre los usuarios y los servidores de borde.
@@ -99,7 +99,7 @@ Actualización de la ruta para manejar solicitudes GET:
 La ruta ahora incluye el patrón /<path:path> para manejar cualquier ruta de contenido solicitada.
 Se implementó la función get_content para manejar las solicitudes GET. Verifica si el contenido está en caché y, si no lo está, lo obtiene del servidor de origen y lo almacena en caché antes de devolverlo.
 ````
-# Resultado análisis:
+### Resultado análisis:
 ````
 C:\Users\PROPIETARIO\PycharmProjects\pythonProject\venv\Scripts\python.exe: Esta es la ruta al intérprete de Python que se utilizó para ejecutar tu script. En este caso, estás utilizando un intérprete de Python que está dentro de un entorno virtual (venv), que es una práctica común para aislar las dependencias de tu proyecto.
 C:\Users\PROPIETARIO\PycharmProjects\pythonProject\main.py: Esta es la ruta al script de Python que se ejecutó.
@@ -111,7 +111,7 @@ Process finished with exit code 0: Esta es una notificación del sistema que ind
 
 Desarrolle un servidor de nombres de dominio (DNS) autoritario capaz de manejar consultaspara un dominio específico. El servidor debe ser capaz de almacenar y mantener registrosde recursos (RR) como A, AAAA, CNAME, MX, etc., y responder de manera eficiente a lasconsultas DNS entrantes.
 
-## Código en Python:
+### Código en Python:
 ````
 import dns.message
 import dns.rdatatype
@@ -163,7 +163,7 @@ if __name__ == "__main__":
 
 
 ````
-# Resultados:
+### Resultados:
 ````
 C:\Users\PROPIETARIO\PycharmProjects\pythonProject\venv\Scripts\python.exe C:\Users\PROPIETARIO\PycharmProjects\pythonProject\main.py 
 Traceback (most recent call last):
@@ -180,11 +180,11 @@ Process finished with exit code 1
 ````
 
 
-# Análisis de código :
+### Análisis de código :
 ````
 Este código crea un servidor DNS básico que escucha en el puerto 53 UDP y responde a las consultas DNS entrantes. Las respuestas se generan en función de los registros de recursos almacenados en el diccionario resource_records. Por favor, ten en cuenta que este es un ejemplo muy básico y no maneja muchos aspectos de un servidor DNS real, como la autenticación, el manejo de errores, la escalabilidad, entre otros. Te recomendaría investigar más sobre estos temas si estás interesado en implementar un servidor DNS real
 ````
-# Análisis de resultado:
+### Análisis de resultado:
 ```
 El error PermissionError: [WinError 10013] Intento de acceso a un socket no permitido por sus permisos de acceso indica que el programa no tiene permisos suficientes para enlazar el socket a la dirección y puerto especificados. Esto puede ocurrir debido a restricciones de permisos en el sistema operativo o porque el puerto está siendo utilizado por otro proceso.
 
@@ -250,7 +250,7 @@ Se asegura de que el servidor Flask se ejecute solo si el script se ejecuta dire
 
 Ejecuta la aplicación Flask en modo de depuración para facilitar la detección y corrección de errores durante el desarrollo.
 
-# Resultado
+### Resultado
 ````
 C:\Users\PROPIETARIO\PycharmProjects\pythonProject\venv\Scripts\python.exe C:\Users\PROPIETARIO\PycharmProjects\pythonProject\main.py 
 Traceback (most recent call last):
@@ -279,11 +279,11 @@ Cambiar el puerto: Si el puerto 5353 está reservado o en uso por otro proceso, 
 Cerrar el programa que utiliza el puerto: Si sabes qué programa está utilizando el puerto 5353, puedes cerrarlo temporalmente para liberar el puerto y permitir que tu programa se ejecute.
 Verificar el firewall: Asegúrate de que tu firewall no esté bloqueando el acceso al puerto especificado. Puedes intentar desactivar temporalmente el firewall para ver si eso resuelve el problema.
 
-##  Problema 4: Optimización de la resolución de nombres de dominio (DNS)
+##  PROBLEMA 4: Optimización de la resolución de nombres de dominio (DNS)
 
 Proponga estrategias para optimizar la resolución de nombres de dominio (DNS) en unentorno de red de alta latencia y alta demanda. Considere técnicas como la prefetchingDNS, la resolución iterativa, el caching DNS y las políticas de equilibrio de carga basadasen la geolocalización y la latencia.
 
-# Código en Python (utilizando dnspython):
+### Código en Python (utilizando dnspython):
 ````
 import dns.resolver
 
@@ -308,7 +308,7 @@ if __name__ == "__main__":
 
 
 ````
-# Resultados 
+### Resultados 
 ```
 C:\Users\PROPIETARIO\PycharmProjects\pythonProject\venv\Scripts\python.exe C:\Users\PROPIETARIO\PycharmProjects\pythonProject\main.py 
   File "C:\Users\PROPIETARIO\PycharmProjects\pythonProject\main.py", line 143
@@ -340,7 +340,7 @@ Para corregir el error de indentación, asegúrate de que todas las líneas dent
 
 El error de "IndentationError" que se muestra en la salida se produce debido a un problema de indentación en el código. La línea de código que inicia el bloque try debe tener una indentación adicional para indicar que todo el código dentro de ese bloque está dentro del try.
 
-## Problema 5: Implementación de un sistema de registro de dominios
+## PROBLEMA 5: Implementación de un sistema de registro de dominios
 
 Desarrolle un sistema de registro de dominios que permita a los usuarios registrar ygestionar nombres de dominio de manera eficiente. Incluye funcionalidades como laverificación de disponibilidad de dominios, la renovación automática, y la gestión deregistros de recursos (RR) como SPF y MX
 

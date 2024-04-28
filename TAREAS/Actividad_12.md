@@ -20,15 +20,17 @@ Los VLANs (Virtual Local Area Networks) se pueden utilizar para segmentar la red
 
 La Calidad de Servicio (QoS) es muy escencial para garantizar que el tráfico de VoIP tenga una prioridad sobre el tráfico de datos regulares, donde esto se puede lograr utilizando una de las técnicas que esta basado en la "priorización en etiquetas", donde este asigna una alta prioridad a los paquetes de VoIP. En el caso de una red Ethernet se puede utilizar la funcionalidad de "clase de servicio" (CoS) que se encuentra disponible en las etiquetas VLAN (IEEE 802.1Q). EL CoS en la etiqueta de VLAN tiene un valor de 3 bits, lo que significa que puede llegar a tener hasta 8 niveles de prioridad, por lo que, se puede configurar la red para que todos los paquetes de VoIP sean etiquetados con un valor de CoS mas alto, asegurando que se les dé prioridad durante la transmisión.
 
-● **Simule el entorno utilizando software de simulación de redes y describa cómo los conceptos de Fast Ethernet, Gigabit Ethernet, y Full-duplex mode se aplican en estediseño.**
+● **Simule el entorno utilizando software de simulación de redes y describa cómo los conceptos de Fast Ethernet, Gigabit Ethernet, y Full-duplex mode se aplican en este diseño.**
 
 Los conceptos mencionados para describir se refiere na las tecnologías y modos de operación en que se pueden utilizar dentro de una red.
 
 - **Fast Ethernet (100BASE-T):** Es una versión de Ethernet que soporta velocidasdes de datos hasta 100 Mbps.
 - **Gigabit Ethernet (1000BASE-T):** Es una versión más rápida de Ethernet  que soporta grandes velocidades de datos de hasta 1000 Mbps (1 Gbps), donde es recomendable para el enlace troncal de la red que necesita aveces una alta capacidad de transmisión de datos.
-- **Full-duplex mode:** Es un modo de comunicación donde los atos pueden ser enviados y recibidos al mismo tiempo, lo que efectivamente duplica la capacidad de transmisión de los datos del enlace, además, es especialmente útil para el tráfico de VoIP que requiere una comunicación bidirrecional constante.
+- **Full-duplex mode:** Es un modo de comunicación donde los datos pueden ser enviados y recibidos al mismo tiempo, lo que efectivamente duplica la capacidad de transmisión de los datos del enlace, además, es especialmente útil para el tráfico de VoIP que requiere una comunicación bidirrecional constante.
 
 - *Para tu presentación y código a presentar puedes utilizar:*
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/fa705d70-d0e0-49fe-a803-0466cae1c510)
 
 #### Parte 1: Diseño de red utilizando VLANs y troncales
 
@@ -36,9 +38,79 @@ Los conceptos mencionados para describir se refiere na las tecnologías y modos 
 
 ● Definir diferentes VLANs para VoIP y datos en cada sucursal.
 
-● Configurar troncales para permitir el tráfico de ambas VLANs entre los switches yrouters de la red Metro Ethernet.
+● Configurar troncales para permitir el tráfico de ambas VLANs entre los switches y routers de la red Metro Ethernet.
 
 ##### Código de python
+
+- Instalamos netmiko para importar la libreria correspondiente:
+
+```
+pip install netmiko
+```
+```
+from netmiko import ConnectHandler
+
+def configure_switch(ip_address, username, password):
+    # Definir VLANs para VoIP y datos
+    commands = [
+        'vlan 10',
+        'name DATA',
+        'exit',
+        'vlan 20',
+        'name VOIP',
+        'exit',
+    ]
+    
+    # Configurar troncales
+    trunk_commands = [
+        'interface range gig0/1-2',
+        'switchport trunk encapsulation dot1q',
+        'switchport mode trunk',
+        'switchport trunk allowed vlan 10,20',
+    ]
+    
+    try:
+        # Conexión al switch
+        switch = {
+            'device_type': 'cisco_ios',
+            'ip': ip_address,
+            'username': username,
+            'password': password,
+        }
+        
+        # Establecer conexión y enviar comandos de VLANs
+        with ConnectHandler(**switch) as conn:
+            vlan_output = conn.send_config_set(commands)
+            print("VLANs configuradas:")
+            print(vlan_output)
+            
+            # Enviar comandos de troncales
+            trunk_output = conn.send_config_set(trunk_commands)
+            print("\nTroncales configuradas:")
+            print(trunk_output)
+            
+            # Desconectar
+            conn.disconnect()
+    except Exception as e:
+        print(f"Error de conexión: {e}")
+
+# Ejemplo de uso
+configure_switch('192.168.1.100', 'admin', 'password')
+```
+#### Resultados:
+
+```
+Error de conexión: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 192.168.1.100:22
+```
+Este código proporciona una forma modular y organizada de configurar un switch utilizando Netmiko, una biblioteca de Python para automatizar tareas de redes, además, permite configurar los VLANs y troncales en el switch de manera que sea eficiente y poder manejar posibles errores de conexión de manera adecuada, Donde en el código nos dio que existe un error de conexión.
+
 
 #### Parte 2: Configuración de QoS para priorizar VoIP
 
@@ -47,9 +119,97 @@ Los conceptos mencionados para describir se refiere na las tecnologías y modos 
 ● Utilizar políticas de QoS para asegurar que el tráfico de VoIP tenga la máximaprioridad.
 
 ##### Código Python:
+```
+from netmiko import ConnectHandler
+
+def configure_qos(ip_address, username, password):
+    switch = {
+        'device_type': 'cisco_ios',
+        'ip': ip_address,
+        'username': username,
+        'password': password,
+    }
+    
+    qos_commands = [
+        'access-list 101 permit ip any any',
+        'class-map match-any VOIP',
+        'match access-group 101',
+        'exit',
+        'policy-map VOIP-Policy',
+        'class VOIP',
+        'set ip dscp ef',
+        'exit',
+        'interface gig0/1',
+        'service-policy output VOIP-Policy',
+    ]
+    
+    try:
+        with ConnectHandler(**switch) as conn:
+            output = conn.send_config_set(qos_commands)
+            print(output)
+            conn.disconnect()
+    except Exception as e:
+        print(f"Error de conexión: {e}")
+
+# Ejemplo de uso
+configure_qos('192.168.1.44', 'admin', 'password')
+
+```
+#### Resultados:
+```
+Error de conexión: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 192.168.1.44:22
+
+```
+El código utiliza la biblioteca Netmiko para establecer conexiones SSH con dispositivos Cisco IOS y configurar políticas de QoS que prioricen el tráfico de VoIP sobre otros tipos de tráfico en la red. Para lograr esto, se definio una función llamada `configure_qos` que toma la dirección IP del dispositivo, el nombre de usuario y la contraseña como parámetros. Esta función envía una serie de comandos de configuración de QoS al dispositivo, incluyendo la creación de listas de acceso, clases de tráfico y políticas de QoS. Luego, establece la conexión SSH con el dispositivo utilizando la función `ConnectHandler` de Netmiko, envía los comandos de configuración donde maneja cualquier error que pueda ocurrir durante el proceso. Finalmente, muestra un ejemplo de uso de la función `configure_qos`, donde nos dio como resultado que existio un error.
 
 #### Parte 3: Simulación y análisis
 - Utilizar herramientas de simulación o scripts adicionales en Python para simular el tráfico y medir la efectividad de las políticas de QoS. Aquí, se podría usar scapy para generar tráficode VoIP y de datos, y observar la priorización basada en los DSCP tags asignados a los paquetes.
+
+```
+pip install scapy
+```
+```
+from scapy.all import *
+
+def generate_traffic():
+   # Definir las direcciones IP de origen y destino.
+    src_ip = "192.168.1.1"
+    dst_ip = "192.168.1.2"
+
+    # Generar tráfico VoIP
+    for i in range(10):
+       # Cree un paquete VoIP con un valor DSCP alto (EF = 46)
+        voip_packet = IP(src=src_ip, dst=dst_ip, tos=184) / UDP(dport=5060)
+        # Enviar el paquete
+        send(voip_packet)
+
+    # Generar tráfico de datos
+    for i in range(10):
+        # Crea un paquete de datos con un valor DSCP bajo (BE = 0)
+        data_packet = IP(src=src_ip, dst=dst_ip, tos=0) / TCP(dport=80)
+        # Send the packet
+        send(data_packet)
+
+# Ejecutar la función para generar tráfico.
+generate_traffic()
+
+```
+#### Resultados:
+```
+Sent 1 packets.
+
+Sent 1 packets.
+```
+
+Este código utiliza la biblioteca Scapy en Python para generar tráfico simulado tanto de VoIP como de datos, donde crea paquetes con direcciones IP de origen y destino predefinidos y los envía a través de la red. La diferencia entre los paquetes de VoIP y datos radica en los valores DSCP (Differentiated Services Code Point) que se les asigno, lo que permite simular diferentes niveles de priorización de tráfico. Luego de generar los paquetes, los envía utilizando la función `send` de Scapy. Este código es útil para probar y analizar políticas de QoS (Quality of Service) en una red simulada.
+
 
 ## PROBLEMA 2: Implementación de seguridad en WLAN con tecnología MIMO-OFDN
 

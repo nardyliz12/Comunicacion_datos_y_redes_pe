@@ -92,16 +92,6 @@ Cada mensaje tendrá una cabecera que incluye el tipo de operación, el tamaño 
 ### Contexto: 
 Una organización requiere un sistema de autenticación segura que utilice LDAPpara la gestión de identidades y SSH para el acceso remoto.
 
-#### Requisitos:
-
-● Diagramar cómo LDAP y SSH pueden integrarse para proporcionar un sistema deautenticación y autorización.
-
-● Discutir la implementación de un túnel SSH que pueda encapsular la comunicaciónLDAP, incluyendo detalles sobre la configuración de port forwarding.
-
-● Escribir un pseudocódigo que ilustre cómo se puede implementar un certificadoautofirmado y cómo LDAP maneja la autenticación.
-
-● Analizar el papel de la capa de transporte en este sistema, con énfasis en losdetalles de SSL/TLS para la protección de datos.
-
 - *Para tu presentación y código a presentar puedes utilizar:*
 
 ##### Objetivos:
@@ -115,15 +105,110 @@ Una organización requiere un sistema de autenticación segura que utilice LDAPp
 - Vamos a configurar un servidor LDAP y proporcionar acceso a él a través de un túnel SSHseguro. Usaremos Python para simular el establecimiento de una conexión SSH conreenvío de puertos
 
 ##### Código de python
+```
+ import paramiko
+ def create_ssh_tunnel(user, password, host, remote_host, local_port, remote_port):
+ client = paramiko.SSHClient()
+ client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ client.connect(host, username=user, password=password)
+ # Establecer un reenvío de puertos para LDAP
+ tunnel = client.get_transport().open_channel('direct-tcpip', (remote_host, remote_port),
+ ('localhost', local_port))
+ return client, tunnel
+ def main():
+ ssh_user = 'admin'
+ ssh_password = 'securepassword'
+ ssh_host = 'example.com'
+ ldap_host = 'ldap.example.com'
+ local_ldap_port = 389
+ remote_ldap_port = 389
+ client, tunnel = create_ssh_tunnel(ssh_user, ssh_password, ssh_host, ldap_host,
+ local_ldap_port, remote_ldap_port)
+ print(f"SSH tunnel established for LDAP on port {local_ldap_port}")
+
+ # Aquí se simularían operaciones LDAP a través del túnel
+ # Por ejemplo, consultas LDAP, autenticación de usuarios, etc.
+ tunnel.close()
+ client.close()
+ if __name__ == '__main__':
+ main()
+```
+### Resultados:
+````
+C:\Users\PROPIETARIO\PycharmProjects\pythonProject1\venv\Scripts\python.exe C:\Users\PROPIETARIO\PycharmProjects\pythonProject1\main.py 
+Traceback (most recent call last):
+  File "C:\Users\PROPIETARIO\PycharmProjects\pythonProject1\main.py", line 34, in <module>
+    main()
+  File "C:\Users\PROPIETARIO\PycharmProjects\pythonProject1\main.py", line 23, in main
+    client, tunnel = create_ssh_tunnel(ssh_user, ssh_password, ssh_host, ldap_host, local_ldap_port, remote_ldap_port)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PROPIETARIO\PycharmProjects\pythonProject1\main.py", line 7, in create_ssh_tunnel
+    client.connect(host, username=user, password=password)
+  File "C:\Users\PROPIETARIO\PycharmProjects\pythonProject1\venv\Lib\site-packages\paramiko\client.py", line 386, in connect
+    sock.connect(addr)
+TimeoutError: [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+
+Process finished with exit code 1
+````
+### Análisis de resultados:
+
+El error experimentado indica que el intento de conexión SSH ha fallado debido a un tiempo de espera. Esto se debe a varias razones:
+
+- El host en invocación no está accesible en la red.
+- Las credenciales proporcionadas son incorrectas.
+- Hay un problema de configuración en el servidor SSH.
+
+Donde para solucionar este problema, podemos hacerlo siguiente:
+
+-El servidor SSH está en funcionamiento y accesible desde la red en la que te encuentras.
+-Las credenciales de inicio de sesión (ssh_user y ssh_password) son correctas y tienen permiso para iniciar sesión en el servidor SSH.
+- No hay restricciones de firewall o configuraciones de red que puedan bloquear la conexión SSH.
 
 #### Paso 2: Implementación de seguridad
 
 - Usaremos SSL/TLS para cifrar la comunicación LDAP. Además, configuraremos certificadosautofirmados para asegurar la comunicación entre el cliente y el servidor LDAP a través deltúnel SSH.
 
 ##### Código Python para la generación de certificados autofirmados:
+```
+ from OpenSSL import crypto
 
-#### Paso 3: 
-- Evaluación de seguridadDiscutir cómo evaluar la seguridad del sistema implementado, abordando potencialesvulnerabilidades como ataques de intermediario y configuraciones erróneas de certificados.La evaluación incluirá pruebas de penetración y revisión de configuraciones
+def create_self_signed_cert(cert_file, key_file):
+    k = crypto.PKey()
+    k.generate_key(crypto.TYPE_RSA, 2048)
+    
+    cert = crypto.X509()
+    cert.get_subject().C = "US"
+    cert.get_subject().ST = "California"
+    cert.get_subject().L = "San Francisco"
+    cert.get_subject().O = "My Company"
+    cert.get_subject().OU = "My Organizational Unit"
+    cert.get_subject().CN = "mydomain.com"
+    cert.set_serial_number(1000)
+    cert.gmtime_adj_notBefore(0)
+    cert.gmtime_adj_notAfter(10*365*24*60*60)
+    cert.set_issuer(cert.get_subject())
+    cert.set_pubkey(k)
+    cert.sign(k, 'sha256')
+    
+    open(cert_file, "wt").write(crypto.dump_certificate(crypto.FILETYPE_PEM, cert).decode('utf-8'))
+    open(key_file, "wt").write(crypto.dump_privatekey(crypto.FILETYPE_PEM, k).decode('utf-8'))
+    
+    print("Certificado y clave creados exitosamente.")
+
+create_self_signed_cert('ldap_cert.pem', 'ldap_key.pem')
+
+```
+#### Resultados:
+```
+Certificado y clave creados exitosamente.
+```
+El código proporcionado utiliza la biblioteca OpenSSL en Python para generar un certificado autofirmado y una clave privada,donde primero, se generan la clave y el certificado utilizando los parámetros especificados, como el país, estado, ciudad, nombre de la organización y nombre común, luego, el certificado se firma utilizando la clave privada y se escriben en archivos de salida especificados en sí este código carece de manejo de errores y de validación de parámetros de entrada, lo que podría afectar su robustez en entornos de producción.
+
+#### Paso 3: Evaluación de seguridad
+
+- **Discutir cómo evaluar la seguridad del sistema implementado, abordando potencialesvulnerabilidades como ataques de intermediario y configuraciones erróneas de certificados.La evaluación incluirá pruebas de penetración y revisión de configuraciones.**
+
+Para evaluar la seguridad del sistema implementado y abordar vulnerabilidades como ataques de intermediario y configuraciones erróneas de certificados, es muy crucial realizar una revisión exhaustiva de las configuraciones de seguridad que se emplean, tales como pruebas de penetración para identificar posibles puntos débiles, certificados para asegurar su validez y cumplimiento de mejores prácticas, monitoreo continuo del tráfico de red para lograr detectar actividades maliciosas y asi mantener el sistema actualizado con las últimas actualizaciones y parches de seguridad para mitigar dichas vulnerabilidades, estas medidas nos ayudarán a proteger el sistema contra posibles amenazas y garantizar su integridad y confidencialidad a mediano y largo plazo.
 
 ## PROBLEMA 4: Simulación de interpolaridad de red con múltiples protocolos
 

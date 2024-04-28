@@ -32,7 +32,7 @@ Los conceptos mencionados para describir se refiere na las tecnologías y modos 
 
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/fa705d70-d0e0-49fe-a803-0466cae1c510)
 
-#### Parte 1: Diseño de red utilizando VLANs y troncales
+### Parte 1: Diseño de red utilizando VLANs y troncales
 
 ##### Requisitos:
 
@@ -112,7 +112,7 @@ Device settings: cisco_ios 192.168.1.100:22
 Este código proporciona una forma modular y organizada de configurar un switch utilizando Netmiko, una biblioteca de Python para automatizar tareas de redes, además, permite configurar los VLANs y troncales en el switch de manera que sea eficiente y poder manejar posibles errores de conexión de manera adecuada, Donde en el código nos dio que existe un error de conexión.
 
 
-#### Parte 2: Configuración de QoS para priorizar VoIP
+### Parte 2: Configuración de QoS para priorizar VoIP
 
 ##### Requsitos:
 
@@ -169,7 +169,7 @@ Device settings: cisco_ios 192.168.1.44:22
 ```
 El código utiliza la biblioteca Netmiko para establecer conexiones SSH con dispositivos Cisco IOS y configurar políticas de QoS que prioricen el tráfico de VoIP sobre otros tipos de tráfico en la red. Para lograr esto, se definio una función llamada `configure_qos` que toma la dirección IP del dispositivo, el nombre de usuario y la contraseña como parámetros. Esta función envía una serie de comandos de configuración de QoS al dispositivo, incluyendo la creación de listas de acceso, clases de tráfico y políticas de QoS. Luego, establece la conexión SSH con el dispositivo utilizando la función `ConnectHandler` de Netmiko, envía los comandos de configuración donde maneja cualquier error que pueda ocurrir durante el proceso. Finalmente, muestra un ejemplo de uso de la función `configure_qos`, donde nos dio como resultado que existio un error.
 
-#### Parte 3: Simulación y análisis
+### Parte 3: Simulación y análisis
 - Utilizar herramientas de simulación o scripts adicionales en Python para simular el tráfico y medir la efectividad de las políticas de QoS. Aquí, se podría usar scapy para generar tráficode VoIP y de datos, y observar la priorización basada en los DSCP tags asignados a los paquetes.
 
 ```
@@ -242,7 +242,7 @@ ESSID (Extended Service Set Identifier) y BSSID (Basic Service Set Identifier) s
 2. Seguridad con WPA3: Implementar y configurar WPA 3 para mejorar la seguridad enla red WLAN.
 3. Simulación con Python: Usar Python para simular la configuración de la red y testearla seguridad
 
-#### Parte 1: Configuración de MIMO-OFDM
+### Parte 1: Configuración de MIMO-OFDM
 
 ##### Código python:
 ```
@@ -330,7 +330,7 @@ Señal MIMO transmitida:
 ```
 El código simula la transmisión MIMO-OFDM, una tecnología clave en redes WLAN modernas. Primero, se genera una señal OFDM utilizando la transformada de Fourier inversa (IFFT) para convertir datos aleatorios en una señal en el dominio del tiempo. Luego, se simula la transmisión MIMO de esta señal, aplicando una fase aleatoria a cada señal transmitida por cada antena. Depúes se agregaron las declaraciones de impresión para visualizar las señales generadas y transmitidas. En resumen, este código ofrece una base para simular y comprender la transmisión MIMO-OFDM utilizando Python y NumPy.
 
-#### Parte 2: Configuración y simulación de WPA3
+### Parte 2: Configuración y simulación de WPA3
 ##### Implementación de WPA3
 
 Configurar WPA3 requiere soporte de hardware y software, pero podemos simular elproceso de configuración utilizando scripts que podrían ser ejecutados en puntos de accesocompatibles con WPA3.
@@ -357,7 +357,7 @@ Configurando WPA3 en el dispositivo
 ```
 El código simula la configuración de WPA3 en un dispositivo WLAN compatible, mediante la función `configure_wpa3`, que actualiza la configuración del dispositivo proporcionado como un argumento, estableciendo el protocolo de seguridad en WPA3, el SSID en "Universidad-RedSegura" y la contraseña en "contraseña_segura_345". El ejemplo de uso define un diccionario vacío para la configuración inicial del dispositivo, que llama a la función `configure_wpa3` con esta configuración y luego imprime la configuración actualizada del dispositivo.
 
-#### Parte 3: Evaluación de la seguridad
+### Parte 3: Evaluación de la seguridad
 
 - Finalmente, para evaluar la seguridad de la implementación de WPA3, podríamos utilizarherramientas como Scapy para simular intentos de ataques y verificar la robustez del cifradoy autenticación en la red.
 
@@ -393,14 +393,14 @@ En un entorno de red ad hoc inalámbrico, los dispositivos sufren de interferenc
 
 #### Requisitos:
 
-● Explique cómo los protocolos CSMA/CA y CSMA/CD difieren y por qué uno es más adecuado que el otro para redes ad hoc inalámbricas.
+● **Explique cómo los protocolos CSMA/CA y CSMA/CD difieren y por qué uno es más adecuado que el otro para redes ad hoc inalámbricas.**
 
 CSMA/CD (Carrier Sense Multiple Access / Collision Detection) y CSMA/CA (Carrier Sense Multiple Access / Collision Avoidance) son dos protocolos de red para la transmisión de portadores.
 
 - CSMA/CD es efectivo después de una colisión que se utiliza en redes cableadas, donde detecta que el canal compartido este ocupado para transmitir e interrumpe la transmisión hasta que el canal este libre. En caso de colisión, la transmisión se detiene y las estaciones logran enviar una señal de atasco y luego la estación espera un tiempo aleatorio antes de la retransmisión nuevamente.
 - CSMA/CA, por otro lado, es efectivo antes de una colisión que usa comúnmente en redes inalámbricas donde minimiza la posibilidad de colisión al anunciar la intención de enviar para la transmisión de datos. Si tras el intervalo de espera el medio se encuentra libre, se procede a la transmisión, de lo contrario se retrasará hasta que este logre estar disponible.
 
-● Discuta el impacto de la interferencia co-canal y proponga métodos de modulación como FHSS o DSSS para mitigar este problema.
+● **Discuta el impacto de la interferencia co-canal y proponga métodos de modulación como FHSS o DSSS para mitigar este problema.**
 
 La interferencia co-canal (CCI) se produce por las transmisiones de dispositivos en la misma área y frecuencia, lo que puede llevar a una reducción del rendimiento en el sistema y a un mayor retraso y caída de paquetes. Los métodos de modulación como FHSS (Frequency Hopping Spread Spectrum) y DSSS (Direct Sequence Spread Spectrum) pueden ayudar a mitigar este problema:
 
@@ -408,7 +408,7 @@ La interferencia co-canal (CCI) se produce por las transmisiones de dispositivos
   
 - DSSS dispersa la señal transmitida por todo el ancho de banda disponible, lo que proporciona una mayor robustez frente a posibles interferencias.
   
-● Desarrolle un algoritmo o protocolo para mejorar el período libre de contención eneste tipo de redes, incluyendo el uso de vectores de inicialización para la seguridadde las transmisiones.
+● **Desarrolle un algoritmo o protocolo para mejorar el período libre de contención eneste tipo de redes, incluyendo el uso de vectores de inicialización para la seguridadde las transmisiones.**
 
 Uno de los algoritmos que podrían ser útiles para mejorar el período libre de contención en redes ad hoc inalámbricas, es el algoritmo de retroceso exponencial binario (BEB), donde este algoritmo evita las colisiones de paquetes durante el acceso simultáneo al aleatorizar momentos en las estaciones que intentan acceder a los canales inalámbricos. En cuanto a la seguridad de las transmisiones, los vectores de inicialización (IVs) son bloques de bits que se utilizan para permitir un cifrado en flujo o un cifrado por bloques, por lo que los IVs son implementados en cifrados por bloques y cifrados en flujo que son requeridos para permitir un cifrado con un resultado independiente de otros cifrados producidos por la misma clave, donde su uso mejora la confidencialidad de las transmisiones.
 
@@ -420,7 +420,7 @@ Uno de los algoritmos que podrían ser útiles para mejorar el período libre de
 3. Mejorar el período libre de contención utilizando un algoritmo personalizado.
 4. Simulación con Python de las estrategias propuestas.
 
-#### Parte 1: Implementación de CSMA/CA en Python
+### Parte 1: Implementación de CSMA/CA en Python
 
 ##### Simulación de CSMA/CA:
 ```
@@ -461,7 +461,7 @@ Node 4: Datos enviados exitosamente
 ```
 El código es una simulación del protocolo CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance) en una red inalámbrica, donde la función `simulate_csma_ca` simula el comportamiento de un nodo CSMA/CA, donde el nodo intenta transmitir datos al medio, dado que si el canal está ocupado, se aplica un mecanismo de backoff exponencial antes de intentar nuevamente, pero si el canal está libre, este se transmite exitosamente. Las funciones auxiliares `is_channel_busy` y `exponential_backoff` simulan la detección del medio y el cálculo del tiempo de espera, respectivamente.
 
-#### Parte2: Mitigación de interferenca Co-canal
+### Parte 2: Mitigación de interferenca Co-canal
 ##### Simulación básica de DSSS:
 ```
 def dsss_encode(data, chip_code):
@@ -500,7 +500,7 @@ Decoded Data 2: [0, 0, 0, 0]
 ```
 El código es una implementación básica de la técnica DSSS (Direct Sequence Spread Spectrum), que se utiliza para mitigar la interferencia co-canal en redes inalámbricas, donde la función `dsss_encode` codifica los datos multiplicando cada bit de entrada por el correspondiente código de chip, lo que ayuda a dispersar la señal en un espectro más amplio, por otro lado, la función `dsss_decode` decodifica los datos sumando los segmentos de datos codificados y determinando si el bit decodificado es 0 o 1 en función de la mayoría de chips. Esto nos permite detectar y corregir errores causados por la interferencia co-canal, donde el código es modular y puede utilizarse con diferentes conjuntos de datos y códigos de chip, lo que proporciona flexibilidad para simular en diferentes escenarios de mitigación de interferencia.
 
-#### Parte 3: Mejora del Período Libre de Contención
+### Parte 3: Mejora del Período Libre de Contención
 ##### Algoritmo de ajuste dinámico:
 ```
 import random
@@ -546,7 +546,7 @@ Una red empresarial compuesta por diferentes segmentos de red, incluyendoEtherne
 
 #### Requisitos:
 
-● Utilice técnicas de diagnóstico para identificar y resolver problemas de crosstalk y jam signal en la red Ethernet.
+● **Utilice técnicas de diagnóstico para identificar y resolver problemas de crosstalk y jam signal en la red Ethernet.**
 
 La diafonía (crosstalk) y la señal de interferencia (jam signal) son problemas muy comunes en las redes Ethernet que pueden afectar la calidad de las comunicaciones, donde para identificar y resolver estos problemas, se pueden utilizar varias técnicas, tales como:
 
@@ -555,7 +555,7 @@ La diafonía (crosstalk) y la señal de interferencia (jam signal) son problemas
 - Uso de cables de alta calidad: Los cables de alta calidad están diseñados para minimizar la interferencia y la diafonía, lo cual sseria de gran ayuda para resolver este tipo de problemas.
 - Uso de tecnología de cancelación de eco: Puede ayudar a reducir la diafonía en las comunicaciones de voz-
 
-● Explique cómo el roaming y la utilización de SIM card pueden afectar la experiencia de los usuarios en la WLAN y proponga soluciones para optimizar la transición entrepuntos de acceso.
+● **Explique cómo el roaming y la utilización de SIM card pueden afectar la experiencia de los usuarios en la WLAN y proponga soluciones para optimizar la transición entrepuntos de acceso.**
 
 El roaming es un servicio que permite a todos los usuarios de telefonía móvil utilizar sus dispositivos en redes de otros operadores, ya sea dentro del mismo país (roaming nacional) o en el extranjero (roaming internacional), sin embargo, el roaming puede generar preocupaciones sobre los costos y la conectividad, además, que podría tener largos periodos de inactividad de una determinada tarjeta SIM unidos a una utilización principal o exclusiva en roaming que pueden afectar la experiencia de todos los usuarIOS. Donde las soluciones que podrían emplerse para mejorar la transmisión entre estos puntos de acceso en WLAN es seguir estas estrategias:
 
@@ -563,7 +563,7 @@ El roaming es un servicio que permite a todos los usuarios de telefonía móvil 
 - Establecer un segundo router como otro punto de acceso: Donde en la práctica, actuará como un repetidor de señal.
 - Actualizar Windows y drivers: Esto puede ayudar a resolver los problemas de conectividad que se pueden llegar a presentar.
 
-● Evalúe cómo diferentes configuraciones de VPN podrían influir en la latencia y el ancho de banda de la red, y proponga ajustes para mejorar la conectividad y seguridad.
+● **Evalúe cómo diferentes configuraciones de VPN podrían influir en la latencia y el ancho de banda de la red, y proponga ajustes para mejorar la conectividad y seguridad.**
 
 Las VPN pueden aumentar ligeramente su latencia debido a las etapas adicionales en la conexión comparada a una sin VPN910 y esto se debe a que las VPN cifran el tráfico de datos y lo redirigen a través de servidores seguros ubicados en distintas regiones, lo que incrementa el tiempo de respuesta, especialmente si los servidores se encuentran muy lejos. Ahora que ajustes podria haber para mejorar la conectividad y seguridad en las VPN, si se quiere conocer  dichos ajustes podriamos seguir las siguientes recomendaciones:
 
@@ -580,7 +580,7 @@ Las VPN pueden aumentar ligeramente su latencia debido a las etapas adicionales 
 3. Configuración y Optimización de VPN: Evaluar y ajustar la configuración de VPNpara mejorar la latencia y el ancho de banda.
 4. Simulación con Python de las estrategias propuestas.
 
-#### Parte 1: Diagnóstico de problemas de Ethernet
+### Parte 1: Diagnóstico de problemas de Ethernet
 ##### Código de Python para simular y diagnósticar problemas de Ethernet:
 ```
 import random
@@ -615,7 +615,7 @@ Jam signal detected! Resetting Ethernet interfaces.
 ```
 El código simula el tráfico en una red Ethernet y emplea un enfoque de diagnóstico para lograr identificar posibles problemas, donde tiliza un bucle para simular varios ciclos de tráfico y selecciona aleatoriamente entre tres patrones de tráfico: normal, crosstalk y jam. Para cada ciclo, se imprime un mensaje que indica si se detectó crosstalk, jam signal o si el tráfico es normal. Esto nos permite una representación simplificada pero efectiva de cómo se podrían identificar y abordar los problemas de crosstalk y jamming en una red Ethernet.
 
-#### Parte 2: Optimización de WLAN
+### Parte 2: Optimización de WLAN
 
 ##### Código de python para simular roaming en WLAN:
 ```
@@ -641,7 +641,7 @@ User1 connected to AP3
 ```
 Este código simula el proceso de roaming en una red WLAN, donde un usuario intenta conectarse a varios puntos de acceso (AP), además utiliza una función `simulate_roaming` que recibe el nombre del usuario y una lista de puntos de acceso como parámetros, luego, itera sobre la lista de puntos de acceso y simula la probabilidad de que el usuario se conecte a uno de ellos, donde si el usuario se conecta a un AP, imprime un mensaje indicando que se ha conectado, pero si el usuario no puede conectarse a ningún AP, imprime un mensaje indicando que la conexión ha fallado, esto nos permite simular cómo el roaming puede afectar la conectividad del usuario en una WLAN.
 
-#### Parte 3: Configuración y Optimización de VPN
+### Parte 3: Configuración y Optimización de VPN
 ##### Código de python paraa simular y optimizar VPN:
 ```
 def configure_vpn_settings(vpn_connection):

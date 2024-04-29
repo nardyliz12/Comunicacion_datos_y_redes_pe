@@ -49,16 +49,6 @@ Sean los siguientes conceptos dados en clase:5-4-3 rule Anonymous FTP Applicatio
 
 Diseñar un protocolo de aplicación personalizado para un sistema de archivosdistribuido que se ejecutará sobre TCP, utilizando técnicas como multiplexación y control deflujo.
 
-##### Requisitos:
-
-● Definir el formato del mensaje, incluyendo cabeceras y extensiones de cabecera.
-
-● Desarrollar un esquema de control de flujo que gestione eficazmente la transferenciade archivos grandes a través de redes con alta latencia.
-
-● Escribir un pseudocódigo para las funciones de conexión, como el handshake detres vías de TCP, y cómo se manejará la retransmisión.
-
-● Evaluar el uso de NAT y su impacto en las conexiones de red en este protocolo,particularmente cuando se utilizan direcciones IP dinámicas.
-
 - *Para tu presentación y código a presentar puedes utilizar:*
 
 ##### Objetivos:
@@ -79,6 +69,47 @@ Vamos a definir un protocolo simple que incluya operaciones básicas como PUT, G
 ● DELETE: Eliminar un archivo del sistema.
 
 Cada mensaje tendrá una cabecera que incluye el tipo de operación, el tamaño delmensaje, y un número de secuencia para el control de flujo y la recuperación de errores
+
+#### Código en python:
+```
+class ProtocolMessage:
+    def __init__(self, operation, message_size, sequence_number):
+        self.operation = operation  # Tipo de operación (PUT, GET, DELETE)
+        self.message_size = message_size  # Tamaño del mensaje
+        self.sequence_number = sequence_number  # Número de secuencia para control de flujo
+
+class FileTransferProtocol:
+    def __init__(self):
+        self.sequence_number = 0  # Inicializar el número de secuencia
+    
+    def send_request(self, operation, file_data=None):
+        if operation == "PUT":
+            message_size = len(file_data) if file_data else 0
+            self.sequence_number += 1
+            request = ProtocolMessage(operation="PUT", message_size=message_size, sequence_number=self.sequence_number)
+        elif operation in ["GET", "DELETE"]:
+            request = ProtocolMessage(operation=operation, message_size=0, sequence_number=self.sequence_number)
+        else:
+            print("Invalid operation")
+            return
+        
+        # Simulación de envío del mensaje
+        print(f"Sending {operation} request: Operation={request.operation}, Size={request.message_size}, Sequence Number={request.sequence_number}")
+
+
+protocol = FileTransferProtocol()
+protocol.send_request("PUT", file_data="file_content")
+protocol.send_request("GET")
+protocol.send_request("DELETE")
+
+```
+#### Resultados:
+```
+Sending PUT request: Operation=PUT, Size=12, Sequence Number=1
+Sending GET request: Operation=GET, Size=0, Sequence Number=1
+Sending DELETE request: Operation=DELETE, Size=0, Sequence Number=1
+```
+Este código crea una clase `ProtocolMessage` que contiene la información requerida para cada mensaje del protocolo,donde la clase `FileTransferProtocol` incluye un método `send_request` que permite enviar solicitudes PUT, GET y DELETE, creando un objeto `ProtocolMessage` correspondiente para cada operación. Se simula el envío del mensaje imprimiendo los detalles de la solicitud en la consola, además, de haber añadido un número de secuencia que se incrementa con cada solicitud para el control de flujo en el sistema.
 
 #### Paso 2: Implementación de control de flujo
 

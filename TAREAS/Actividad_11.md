@@ -13,13 +13,28 @@ Una empresa necesita diseñar una red segura que conecte tres sucursalesubicadas
 
 **1. ¿Qué tipo de tecnología de WAN utilizarías para conectar las sucursales y por qué?(Considera opciones como Frame Relay, MPLS, etc.)**
 
-**2. Describe cómo implementarías el cifrado en la red. ¿Qué tipos de claves yprotocolos utilizarías?**
+Se podría utilizar MPLS (Multiprotocol Label Switching) debido a que cuenta con una gran capacidad para manejar datos de manera eficiente y su compatibilidad con diferentes tecnologías de acceso, MPLS ofrece una gestión de tráfico superior y permite la creación de VPNs (Redes Privadas Virtuales) que pueden cifrar los datos transmitidos entre todas las sucursales que se tiene o se quiere crear.
 
-**3. Dibuja una topología de red que incluya dispositivos como routers, switches, yfirewalls. Explica la función de cada dispositivo en tu diseño. Puedes utilizar PacketTracer**
+**2. Describe cómo implementarías el cifrado en la red. ¿Qué tipos de claves y protocolos utilizarías?**
+
+  - Claves: Se podrían utilizar claves simétricas para el cifrado de datos debido a la eficiencia que tiene en entornos donde la velocidad de cifrado y descifrado es de manera crítica.
+  - Protocolos: Podríamos implementar IPsec (Internet Protocol Security) para cifrar el tráfico de la red en la capa de Internet, y utilizando así modos como Transporte y Túnel para asegurar la comunicación entre estas sucursales.
+    
+**3. Dibuja una topología de red que incluya dispositivos como routers, switches, y firewalls. Explica la función de cada dispositivo en tu diseño. Puedes utilizar PacketTracer**
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/c8ae1119-ba7d-4f8d-83c4-fa3d615974b9)
+
+  - Routers: Conecta las sucursales a través de la red MPLS.
+  - Switches: Distribuye el tráfico de red dentro de cada sucursal.
+  - Firewalls: Protege cada sucursal de accesos no autorizados y filtra el tráfico.
 
 **4. ¿Cómo garantizarías la integridad y autenticidad de los datos transmitidos entre lassucursales? Detalla el uso de checksums o CRC.**
 
-- Para tu presentación y código a presentar puedes utilizar:
+- Para lograr garantizar la integridad, implementaría checksums o CRC (Cyclic Redundancy Check) para detectar cualquier alteración en los datos transmitidos, en cuanto a la autenticidad, usaría certificados digitales y autenticación mutua en el protocolo IPsec para asegurar que todas las comunicaciones sean entre las partes correctas, donde Checksums y CRC tienen las siguientes definicones.
+  - **Checksums:** Es un método simple que suma o aplica XOR a los bits de cada dato para crear un valor de comparación, donde su principal objetivo es poder detectar cambios malintencionados o accidentales en una transmisión de datos con el fin de proteger la integridad de la información del usuario, basicamente se basa en el enfoque de adición y es ampliamente utilizado para la validación de datos durante la implementación del software.
+  - **CRC:** Es uno de los algoritmos más robustos y ampliamente utilizado que calcula un valor único basado en el contenido de los datos, donde utiliza una fórmula matemática basada en codificación de 16 bits o 32 bits y un método hash para lograr verificar anomalías en los datos, basicamente, CRC es capaz de detectar errores más complejos debido a su método de cálculo basado en la división polinomial.
+
+- *Para tu presentación y código a presentar puedes utilizar:*
 
 #### Requisitos:
 
@@ -32,9 +47,15 @@ Una empresa necesita diseñar una red segura que conecte tres sucursalesubicadas
 #### Preguntas:
 
 - **Dibuja una topología de red para este esccenario que incluya los dispositivos de red necesarios ca da sucursal.**
+  
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/6176a6eb-8214-4adc-ac4e-e290609fbbc3)
 
 - **Explica cómo cada dispositivo contribuye a la seguridad y eficiencia de la red.**
-
+  
+   - Routers: Aseguranla conectividad entre las sucursales, donde se podrían implementar VPNs para cifrar el tráfico que pasa a través de la red pública.
+   - Switches: Mejora la eficiencia de la red al segmentar el tráfico y reducir las colisiones en la LAN.
+   - Firewalls: Sera fundamental para la seguridad de la red, filtrando el tráfico no deseado y previniendo accesos no autorizados que se lleguen a presentar.
+     
 #### Parte 2: Configuración de VNP de red
 
 ##### Código python
@@ -97,9 +118,62 @@ Cada línea corresponde a la respuesta del router. Si hay errores en la configur
 
 #### Preguntas adicionales:
 
-- ¿Cómo implementarias el cifrado de extremo a extremo además de la VNP? Considdera el uso de claves públicas y privadas.
+1. **¿Cómo implementarias el cifrado de extremo a extremo además de la VNP? Considera el uso de claves públicas y privadas.**
 
-- Proporciona un esquema para implementar un sistema robusto de logs y monitoreo de la red utilizando herramientas modernas de gestión de red. ¿Cómo podría python automatizar la recopilación?
+- Para implementar el cifrado de extremo a extremo además de una VPN, se podría hacer siguiendo los siguientes pasos:
+
+   - Generación de claves: Cada sucursal genera un par de claves, donde una pública y la otra privada, la clave pública se puede compartir abiertamente, mientras que la clave privada debe mantenerse segura y no ser compartida.
+   - Intercambio de claves públicas: Las sucursales intercambiarían sus claves públicas entre sí de manera segura.
+   - Cifrado y descifrado de mensajes: Cuando una sucursal envía un mensaje a otra sucursal, deberia cifrar el mensaje utilizando la clave pública del destinatario y al recibir el mensaje, el destinatario lo tendria que descifrar con la clave privada.
+    
+2. **Proporciona un esquema para implementar un sistema robusto de logs y monitoreo de la red utilizando herramientas modernas de gestión de red. ¿Cómo podría python automatizar la recopilación?**
+
+  - Herramientas de monitoreo de red: Podrimos utilizar herramientas como Nagios, Zabbix o Pandora FMS para monitorear la red y generar los logs.
+  - Gestión de logs: Tenemos que configurar un sistema centralizado para la gestión de logs, como Elasticsearch, Logstash y Kibana (ELK), para asi recopilar, almacenar y analizar los logs.
+  - Automatización con Python: podemos escribir scripts en Python que utilicen bibliotecas como logging para automatizar la recopilación y el procesamiento de los logs, donde estos podrían ejecutarse en intervalos regulares o en respuesta a eventos específicos.
+
+#### Código de python:
+```
+import subprocess
+import shutil
+import logging
+from logging.handlers import RotatingFileHandler
+
+# Configuración básica del logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger('LogMonitor')
+
+# Handler para rotar los logs cada cierto tamaño
+handler = RotatingFileHandler('network_logs.log', maxBytes=2000, backupCount=5)
+logger.addHandler(handler)
+
+def monitor_network():
+    # Verificar si 'ping' está disponible en el sistema
+    if shutil.which('ping') is None:
+        logger.error("'ping' no está disponible en este sistema.")
+        return
+
+    # Comando para obtener información de la red
+    command = ['ping', 'www.google.com', '-c', '4']
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+
+    # Log de la salida del comando
+    if process.returncode == 0:
+        logger.info(f'Success: {stdout}')
+    else:
+        logger.error(f'Error: {stderr}')
+
+if __name__ == '__main__':
+    # Ejecutar el monitoreo de la red
+    monitor_network()
+```
+#### Resultados.
+```
+ERROR:LogMonitor:'ping' no está disponible en este sistema.
+```
+Este código implementa un monitor de red básico utilizando el módulo `subprocess` para ejecutar el comando `ping` en el sistema, donde comienza configurando el registro de eventos, estableciendo un nivel de registro a `INFO` y creando un logger llamado "LogMonitor" que se asocia con un archivo de registro rotativo llamado "network_logs.log" esta función `monitor_network()` verifica la disponibilidad del comando `ping` en el sistema, y si está disponible, ejecuta el comando para realizar un ping a "www.google.com" con un recuento de 4 intentos, donde la salida del comando se registra en el archivo de registro según el resultado de la ejecución y finalmente, el script se ejecuta cuando se llama directamente, iniciando el monitoreo de red.
+
 
 ## PROBLEMA 2: Optimización de protocolos y caché
 

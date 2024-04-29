@@ -86,26 +86,20 @@ Process finished with exit code 0
 
 
 ### Codificación Análisis
-````
-Simulación de datos:
-Se agregaron diccionarios para simular el contenido en el servidor de origen, la ubicación geográfica de los usuarios y las latencias entre los usuarios y los servidores de borde.
-Función para obtener la latencia:
-Se agregó una función get_latency para obtener la latencia entre un usuario y un servidor de borde.
-Función para encontrar el servidor de borde más cercano:
-Se agregó una función find_closest_edge_server para encontrar el servidor de borde más cercano a un usuario basado en la latencia.
-Implementación de la función fetch_from_origin:
-Se agregó una simulación de la función fetch_from_origin para obtener contenido del servidor de origen.
-Actualización de la ruta para manejar solicitudes GET:
-La ruta ahora incluye el patrón /<path:path> para manejar cualquier ruta de contenido solicitada.
-Se implementó la función get_content para manejar las solicitudes GET. Verifica si el contenido está en caché y, si no lo está, lo obtiene del servidor de origen y lo almacena en caché antes de devolverlo.
-````
+
+- Simulación de datos: Se agregaron diccionarios para simular el contenido en el servidor de origen, la ubicación geográfica de los usuarios y las latencias entre los usuarios y los servidores de borde.
+- Función para obtener la latencia: Se agregó una función get_latency para obtener la latencia entre un usuario y un servidor de borde.
+- Función para encontrar el servidor de borde más cercano: Se agregó una función find_closest_edge_server para encontrar el servidor de borde más cercano a un usuario basado en la latencia.
+- Implementación de la función fetch_from_origin: Se agregó una simulación de la función fetch_from_origin para obtener contenido del servidor de origen.
+- Actualización de la ruta para manejar solicitudes GET: La ruta ahora incluye el patrón /<path:path> para manejar cualquier ruta de contenido solicitada.
+- Se implementó la función get_content para manejar las solicitudes GET, para verificar si el contenido está en el caché y, si no lo está, lo obtiene del servidor de origen y lo almacena en el caché antes de devolverlo.
+
 ### Resultado análisis:
 ````
 C:\Users\PROPIETARIO\PycharmProjects\pythonProject\venv\Scripts\python.exe: Esta es la ruta al intérprete de Python que se utilizó para ejecutar tu script. En este caso, estás utilizando un intérprete de Python que está dentro de un entorno virtual (venv), que es una práctica común para aislar las dependencias de tu proyecto.
 C:\Users\PROPIETARIO\PycharmProjects\pythonProject\main.py: Esta es la ruta al script de Python que se ejecutó.
-Process finished with exit code 0: Esta es una notificación del sistema que indica que tu script ha terminado de ejecutarse. Un código de salida de 0 generalmente significa que el programa se ejecutó con éxito sin errores.
-
-
+Process finished with exit code 0:
+Esta es una notificación del sistema que indica que tu script ha terminado de ejecutarse. Un código de salida de 0 generalmente significa que el programa se ejecutó con éxito sin errores.
 ````
 ## PROBLEMA 2: Implementación de un servidor autoritario de DNS
 
@@ -175,25 +169,23 @@ PermissionError: [WinError 10013] Intento de acceso a un socket no permitido por
 
 
 Process finished with exit code 1
-
-
 ````
 
 
 ### Análisis de código :
-````
+
 Este código crea un servidor DNS básico que escucha en el puerto 53 UDP y responde a las consultas DNS entrantes. Las respuestas se generan en función de los registros de recursos almacenados en el diccionario resource_records. Por favor, ten en cuenta que este es un ejemplo muy básico y no maneja muchos aspectos de un servidor DNS real, como la autenticación, el manejo de errores, la escalabilidad, entre otros. Te recomendaría investigar más sobre estos temas si estás interesado en implementar un servidor DNS real
-````
+
 ### Análisis de resultado:
 ```
 El error PermissionError: [WinError 10013] Intento de acceso a un socket no permitido por sus permisos de acceso indica que el programa no tiene permisos suficientes para enlazar el socket a la dirección y puerto especificados. Esto puede ocurrir debido a restricciones de permisos en el sistema operativo o porque el puerto está siendo utilizado por otro proceso.
 
 Para corregir este problema, hay varias opciones que puedes intentar:
 
-Ejecutar el programa como administrador: Intenta ejecutar el programa con permisos de administrador. Los permisos de administrador pueden otorgar los privilegios necesarios para enlazar el socket al puerto especificado.
-Cambiar el puerto: Si el puerto 5353 está reservado o en uso por otro proceso, intenta cambiar el puerto a uno diferente que esté disponible. Puedes cambiar server_port = 5353 a un puerto diferente, como server_port = 5354.
-Cerrar el programa que utiliza el puerto: Si sabes qué programa está utilizando el puerto 5353, puedes cerrarlo temporalmente para liberar el puerto y permitir que tu programa se ejecute.
-Verificar el firewall: Asegúrate de que tu firewall no esté bloqueando el acceso al puerto especificado. Puedes intentar desactivar temporalmente el firewall para ver si eso resuelve el problema.
+- Ejecutar el programa como administrador: Intenta ejecutar el programa con permisos de administrador. Los permisos de administrador pueden otorgar los privilegios necesarios para enlazar el socket al puerto especificado.
+- Cambiar el puerto: Si el puerto 5353 está reservado o en uso por otro proceso, intenta cambiar el puerto a uno diferente que esté disponible. Puedes cambiar server_port = 5353 a un puerto diferente, como server_port = 5354.
+- Cerrar el programa que utiliza el puerto: Si sabes qué programa está utilizando el puerto 5353, puedes cerrarlo temporalmente para liberar el puerto y permitir que tu programa se ejecute.
+- Verificar el firewall: Asegúrate de que tu firewall no esté bloqueando el acceso al puerto especificado. Puedes intentar desactivar temporalmente el firewall para ver si eso resuelve el problema.
 ```
 ## PROBLEMA 3: Diseño de un sistema de gestión de dominios (DNS)
 
@@ -226,30 +218,6 @@ Diseñe un sistema de gestión de dominios que incluya registradores de dominios
  if __name__ == '__main__':
  app.run(debug=True)
 ````
-### Análisis de código:
-
-1.Importaciones de bibliotecas:
-Se importan las clases necesarias de la biblioteca Flask para crear la aplicación web, manejar las solicitudes HTTP y generar respuestas JSON.
-
-2. Creación de la aplicación Flask: Se crea una instancia de la clase Flask para crear la aplicación web.
-
-3. Base de datos ficticia: Se define una estructura de datos, en este caso un diccionario, para simular una base de datos donde se almacenarán los nombres de dominio y sus direcciones IP asociadas.
-4. Ruta para registrar dominios: Se define una ruta /register que acepta solicitudes POST para registrar nuevos dominios.
-
-La función register_domain() extrae el nombre de dominio y la dirección IP de la solicitud JSON.
-Verifica si el dominio ya está registrado en la base de datos. Si el dominio no está registrado, lo agrega a la base de datos y devuelve un mensaje de éxito
-
-5. Ruta para resolver dominios:
-Se define una ruta /resolve/<domain_name> que acepta solicitudes GET para resolver nombres de dominio.
-La función resolve_domain() toma el nombre de dominio como parámetro de la URL.
-Verifica si el dominio está registrado en la base de datos.
-Si el dominio está registrado, devuelve el nombre de dominio y su dirección IP asociada.
-
-6. Inicio de la aplicación:
-Se asegura de que el servidor Flask se ejecute solo si el script se ejecuta directamente (no cuando se importa como un módulo).
-
-Ejecuta la aplicación Flask en modo de depuración para facilitar la detección y corrección de errores durante el desarrollo.
-
 ### Resultado
 ````
 C:\Users\PROPIETARIO\PycharmProjects\pythonProject\venv\Scripts\python.exe C:\Users\PROPIETARIO\PycharmProjects\pythonProject\main.py 
@@ -263,22 +231,15 @@ PermissionError: [WinError 10013] Intento de acceso a un socket no permitido por
 
 Process finished with exit code 1
 ````
+### Análisis de código:
+
+El código define una aplicación web usando Flask para manejar el registro y la resolución de nombres de dominio. Se importan las clases necesarias de Flask y se crea una instancia de la aplicación, donde se simula una base de datos ficticia con un diccionariosm que tiene dos rutas son definidas: una para registrar nuevos dominios y otra para resolver dominios registrados. La primera ruta acepta solicitudes POST y la segunda solicitudes GET, todas las funciones asociadas a cada ruta verifican y manejan las solicitudes correspondientes, devolviendo mensajes de éxito o la información solicitada, finalmente, la aplicación se ejecuta en modo de depuración para facilitar el desarrollo y la detección de errores.
 
 ###  Análisis de resultado:
+```
+El error PermissionError: [WinError 10013] indica que el programa no tiene los permisos necesarios para enlazar el socket a la dirección y puerto especificados, lo que puede ser causado por restricciones de permisos del sistema operativo o por el puerto ya está siendo utilizado por otro proceso. Para resolverlo, puedes ejecutar el programa como administrador, cambiar el puerto a uno diferente, cerrar el programa que utiliza el puerto 5353 si es posible, o verificar y ajustar la configuración del firewall para permitir el acceso al puerto especificado.
 
-El error PermissionError: [WinError 10013] Intento de acceso a un socket no permitido por sus permisos de acceso indica que el programa no tiene permisos suficientes para enlazar el socket a la dirección y puerto especificados. Esto puede ocurrir debido a restricciones de permisos en el sistema operativo o porque el puerto está siendo utilizado por otro proceso.
-
-Cuando un programa intenta enlazar un socket a una dirección y puerto específicos, el sistema operativo verifica si tiene los permisos necesarios para hacerlo. Si el programa no tiene los permisos adecuados, se produce este error.
-
-Para solucionar este problema, puedes intentar lo siguiente:
-
-Ejecutar el programa como administrador: Intenta ejecutar el programa con permisos de administrador. Los permisos de administrador pueden otorgar los privilegios necesarios para enlazar el socket al puerto especificado.
-
-Cambiar el puerto: Si el puerto 5353 está reservado o en uso por otro proceso, intenta cambiar el puerto a uno diferente que esté disponible. Puedes cambiar server_port = 5353 a un puerto diferente, como server_port = 5354.
-
-Cerrar el programa que utiliza el puerto: Si sabes qué programa está utilizando el puerto 5353, puedes cerrarlo temporalmente para liberar el puerto y permitir que tu programa se ejecute.
-Verificar el firewall: Asegúrate de que tu firewall no esté bloqueando el acceso al puerto especificado. Puedes intentar desactivar temporalmente el firewall para ver si eso resuelve el problema.
-
+```
 ##  PROBLEMA 4: Optimización de la resolución de nombres de dominio (DNS)
 
 Proponga estrategias para optimizar la resolución de nombres de dominio (DNS) en unentorno de red de alta latencia y alta demanda. Considere técnicas como la prefetchingDNS, la resolución iterativa, el caching DNS y las políticas de equilibrio de carga basadasen la geolocalización y la latencia.
@@ -321,25 +282,12 @@ Process finished with exit code 1
 ```
 ### Análisis de código:
 
-
-Importación de módulos: El código importa el módulo dns.resolver, que se utiliza para realizar consultas DNS.
-Función dns_lookup:
-
-Esta función toma un parámetro domain_name, que es el nombre de dominio para el que se realizará la consulta DNS.
-
-Dentro del bloque try, intenta realizar la consulta DNS utilizando dns.resolver.resolve().
-Si la consulta DNS tiene éxito y se obtienen resultados, itera sobre los resultados y los imprime en la consola.
-
-Maneja excepciones como dns.resolver.NoAnswer, dns.resolver.NXDOMAIN y dns.exception.Timeout, que se producen en caso de que no se encuentren registros de recursos, el dominio no exista o la consulta DNS exceda el tiempo de espera respectivamente.
-
-Bloque if __name__ == "__main__":: Este bloque asegura que el código dentro de él solo se ejecute cuando el script se ejecute directamente, no cuando se importe como un módulo en otro script. Define el nombre de dominio como 'example.com' y llama a la función dns_lookup() con este nombre de dominio.
-Para corregir el error de indentación, asegúrate de que todas las líneas dentro del bloque try estén indentadas correctamente, probablemente con cuatro espacios o un tabulador. 
+El código importa el módulo dns.resolver para realizar consultas DNS, donde la función dns_lookup(domain_name) toma un nombre de dominio como parámetro y trata de realizar una consulta DNS, dentro de un bloque try, intenta resolver el nombre de dominio y, si tiene éxito, imprime los resultados en la consola, además, maneja excepciones como NoAnswer, NXDOMAIN y Timeout. El bloque if __name__ == "__main__" asegura que el código dentro de él se ejecute solo cuando el script se ejecuta directamente, lo que define el nombre de dominio como 'example.com' y llama a la función dns_lookup() con este nombre, para corregir el error de indentación, verifica que todas las líneas dentro del bloque try estén correctamente indentadas, generalmente con cuatro espacios o un tabulador.
 
 ### Análisis de resultados
-
-
+```
 El error de "IndentationError" que se muestra en la salida se produce debido a un problema de indentación en el código. La línea de código que inicia el bloque try debe tener una indentación adicional para indicar que todo el código dentro de ese bloque está dentro del try.
-
+```
 ## PROBLEMA 5: Implementación de un sistema de registro de dominios
 
 Desarrolle un sistema de registro de dominios que permita a los usuarios registrar ygestionar nombres de dominio de manera eficiente. Incluye funcionalidades como laverificación de disponibilidad de dominios, la renovación automática, y la gestión deregistros de recursos (RR) como SPF y MX
@@ -370,37 +318,6 @@ if __name__ == "__main__":
 
 
 ````
-
-### Análisis de código:
-Este código realiza una consulta DNS para un nombre de dominio dado utilizando la biblioteca `dnspython`. Aquí está la explicación paso a paso:
-
-
-1. Importa la biblioteca `dns.resolver`, que proporciona funciones para realizar consultas DNS.
-   
-2. Define una función llamada `dns_lookup` que toma un parámetro `domain_name`, que es el nombre de dominio para el que se realizará la consulta DNS.
-
-
-3. En el bloque `try`, se intenta realizar una consulta DNS para el nombre de dominio dado utilizando `dns.resolver.resolve()`. El segundo argumento `'A'` especifica el tipo de registro de recursos que se está buscando, en este caso, registros de tipo A que resuelven nombres de dominio a direcciones IP.
-
-
-4. Si la consulta DNS tiene éxito y se obtienen resultados, itera sobre los resultados y los imprime en la consola usando `ip_address.to_text()` para convertir la dirección IP en un formato legible.
-
-
-5. Si la consulta DNS no devuelve ningún resultado (NoAnswer), imprime un mensaje indicando que no se encontraron registros de recursos para el dominio dado.
-
-
-6. Si el dominio no existe (NXDOMAIN), imprime un mensaje indicando que el dominio no existe.
-
-
-7. Si la consulta DNS excede el tiempo de espera especificado, imprime un mensaje indicando que la consulta DNS ha excedido el tiempo de espera.
-
-
-8. En la parte final del script, se comprueba si el script se está ejecutando como el programa principal (es decir, no ha sido importado como un módulo en otro script). Si es así, se define el nombre de dominio como `'example.com'` y se llama a la función `dns_lookup()` con este nombre de dominio.
-
-
-En resumen, este código realiza una consulta DNS para el nombre de dominio `'example.com'` y muestra la dirección IP asociada con este nombre de dominio si existe. Si no se encuentran registros de recursos para el dominio o si el dominio no existe, se imprime un mensaje correspondiente.
-
-
 ### Resultados:
 
 ```
@@ -413,30 +330,11 @@ IndentationError: expected an indented block after 'try' statement on line 141
 
 Process finished with exit code 1
 ```
+### Análisis de código:
 
+El código utiliza la biblioteca `dnspython` para realizar una consulta DNS sobre un nombre de dominio dado, donde define una función llamada `dns_lookup` que intenta resolver el nombre de dominio utilizando `dns.resolver.resolve()` para buscar registros de tipo A que asocien el nombre de dominio con direcciones IP. Si la consulta tiene éxito, imprime las direcciones IP obtenidas, maneja casos donde no se encuentran registros de recursos para el dominio, donde el dominio no existe o la consulta excede el tiempo de espera, sii el script se ejecuta como el programa principal, se realiza la consulta DNS para el nombre de dominio 'example.com'.
 
 ###  Análisis de resultados
-
-
-Análisis de requisitos: Identificar los requisitos del sistema, incluyendo la capacidad de registrar nuevos dominios, verificar la disponibilidad de nombres de dominio, gestionar la información del propietario del dominio y gestionar la base de datos de dominios registrados.
-
-
-Diseño de la base de datos: Diseñar la estructura de la base de datos para almacenar la información de los dominios registrados, incluyendo detalles como el nombre de dominio, la información del propietario, la fecha de registro y el estado del dominio.
-
-
-Desarrollo de la interfaz de usuario: 
-
-
-Crear una interfaz de usuario intuitiva para que los usuarios puedan interactuar con el sistema y registrar nuevos dominios. Esto puede incluir formularios de registro, páginas de búsqueda de disponibilidad de nombres de dominio y paneles de administración de dominios.
-
-Implementación de la lógica de negocio:
-
-Escribir el código para las funciones principales del sistema, como el registro de nuevos dominios, la verificación de disponibilidad de nombres de dominio y la gestión de la información del propietario del dominio. Esto puede incluir la validación de datos de entrada y la generación de respuestas adecuadas para el usuario.
-
-
-
-
-Pruebas y depuración:
-
-
-Realizar pruebas exhaustivas para verificar el correcto funcionamiento del sistema en diferentes escenarios, incluyendo el registro de nuevos dominios, la búsqueda de disponibilidad de nombres de dominio y la gestión de dominios existentes. Utilizar herramientas de depuración para identificar y corregir errores.
+```
+El sistema debe ser capaz de gestionar el registro de nuevos dominios, verificar la disponibilidad de nombres de dominio, y administrar la información del propietario y la base de datos de dominios registrados, para esto, se deberia diseñar una estructura de base de datos que incluya detalles como el nombre de dominio, la información del propietario, la fecha de registro y el estado del dominio. Donde la interfaz de usuario será intuitiva e incluirá formularios de registro, páginas de búsqueda de disponibilidad de nombres de dominio y paneles de administración. La implementación de la lógica de negocio se realizará mediante el desarrollo de funciones para el registro de nuevos dominios, la verificación de disponibilidad y la gestión de la información del propietario, con validación de datos de entrada y generación de respuestas adecuadas. Se llevarán a cabo pruebas exhaustivas para garantizar el correcto funcionamiento del sistema en diferentes escenarios, utilizando herramientas de depuración para identificar y corregir errores de manera satisfactoria.
+```

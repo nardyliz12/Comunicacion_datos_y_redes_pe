@@ -365,7 +365,12 @@ Una startup tecnológica desea implementar una red P2P robusta para permitir eli
 ````
 #### Resultados:
 ````
+C:\Users\PROPIETARIO\PycharmProjects\pythonProject1\venv\Scripts\python.exe C:\Users\PROPIETARIO\PycharmProjects\pythonProject1\main.py 
+Node started on 127.0.0.1:5000
 ````
+
+El código implementa un sistema de pares (peer-to-peer) utilizando sockets en Python. La clase `Peer` inicializa un nodo que puede aceptar conexiones de otros nodos y asi gestionar la comunicación entre ellos. Cuando se inicia un nodo, se establece un servidor en el host y puerto especificados para aceptar conexiones entrantes de otros pares, donde cada conexión entrante se maneja en un hilo separado, lo que permite que el nodo siga aceptando conexiones mientras maneja las existentes. La comunicación entre pares se logra mediante la función `broadcast_data`, que reenvía los datos recibidos de un par a todos los demás pares conectados, excluyendo al remitente original, además, se proporciona un método `connect_to_peer` para permitir que un nodo se conecte a otro nodo específico, en otras palabras, este código establece una infraestructura básica para la comunicación peer-to-peer y puede ser utilizado como base para aplicaciones más complejas que requieran interacción entre nodos en una red.
+
 #### Parte 2: Gestión de recursos y distribución de carga
 
 - *Estrategias de equilibrio de carga:*
@@ -440,6 +445,9 @@ Task 'Task3' handled by node 'Node1'
 Task 'Task4' handled by node 'Node1'
 Process finished with exit code 0
 ````
+En este código se implementó la clase `LoadBalancer` que gestiona la distribución de tareas entre diferentes nodos. La clase `Node` representa los nodos disponibles, cada uno con un nombre y una cantidad de recursos disponibles. El método `add_node` de `LoadBalancer` permite agregar nodos a la lista de nodos disponibles. Para distribuir tareas, el método `assign_load_based_on_resources` asigna la tarea al nodo con más recursos disponibles, mientras que el método `round_robin` implementa un algoritmo de round-robin para distribuir tareas de manera equitativa entre los nodos. Además, se proporciona una función `create_self_signed_cert` para generar un certificado autofirmado utilizando la biblioteca OpenSSL, en el ejemplo de uso al final del código, se creó un balanceador de carga (`LoadBalancer`), donde se agregan varios nodos a él, y se asignan tareas utilizando los métodos mencionados. Este código proporciona una estructura básica para implementar un balanceador de carga simple en Python y generar certificados autofirmados.
+
+
 #### Parte 3: Seguridad en la Red P2P
 
 ##### Código python:
@@ -514,3 +522,4 @@ node = Peer('127.0.0.1', 5000, password)
 C:\Users\PROPIETARIO\PycharmProjects\pythonProject1\venv\Scripts\python.exe C:\Users\PROPIETARIO\PycharmProjects\pythonProject1\main.py 
 Node started on 127.0.0.1:5000
 ```
+Este código implementa un sistema de pares (peer-to-peer) con autenticación de contraseñas utilizando sockets en Python, donde la clase `Peer` inicializa un nodo que puede aceptar conexiones de otros nodos y gestionar la comunicación entre ellos, admás e utiliza una contraseña proporcionada para generar una clave secreta usando la función de derivación de claves basada en contraseña (PBKDF2), esta clave se utiliza para autenticar las conexiones entrantes, verificando si la contraseña proporcionada por el cliente coincide con la almacenada en el nodo, donde si la autenticación es exitosa, el cliente puede unirse a la red y enviar mensajes, además el nodo puede recibir mensajes de otros pares y reenviarlos a todos los demás pares conectados, el código también implementa una respuesta de "ping-pong" para comprobar la conectividad de los nodos. En otras palabras, este código proporciona una estructura básica para un sistema de pares con autenticación de contraseñas y comunicación segura entre nodos en una red peer-to-peer.

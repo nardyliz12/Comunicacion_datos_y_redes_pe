@@ -66,7 +66,7 @@ fetch_emails(imap_server)
 ````
 #### Paso 2: 
 
-- Implementación de SSL/TLSPara implementar SSL/TLS en estos servidores, utilizamos la opción de conexión segura ensmtplib (SMTP_SSL) y imaplib (IMAP4_SSL). Esto garantiza que todas las comunicacionesentre el cliente y el servidor están encriptadas.
+- **Implementación de SSL/TLSPara implementar SSL/TLS en estos servidores, utilizamos la opción de conexión segura ensmtplib (SMTP_SSL) y imaplib (IMAP4_SSL). Esto garantiza que todas las comunicacionesentre el cliente y el servidor están encriptadas.**
 
 Para implementar SSL/TLS (Capa de Sockets Seguros/Seguridad de la Capa de Transporte) en servidores SMTP e IMAP, utilizamos las siguientes opciones de conexión: 
 * En smtplib (SMTP_SSL): Esta clase permite crear una conexión SMTP segura utilizando SSL. Establece automáticamente una conexión SSL al servidor en un puerto específico, típicamente 465.
@@ -90,7 +90,7 @@ Cuando ejecutas este código, no verás ninguna salida visible en la consola a m
 
 #### Paso 4: Discusión sobre DHCP y NAT
 
-- Es importante discutir cómo la asignación de direcciones IP dinámicas a través de DHCP yla traducción de direcciones IP realizada por NAT pueden afectar el acceso y la visibilidadde los servidores de correo desde el exterior de la red local. Es posible que se necesitenconfiguraciones de NAT estático o el uso de servicios DNS dinámicos para garantizar quelos servidores sean accesibles consistentemente.
+- **Es importante discutir cómo la asignación de direcciones IP dinámicas a través de DHCP yla traducción de direcciones IP realizada por NAT pueden afectar el acceso y la visibilidadde los servidores de correo desde el exterior de la red local. Es posible que se necesitenconfiguraciones de NAT estático o el uso de servicios DNS dinámicos para garantizar quelos servidores sean accesibles consistentemente.**
 
   - Para comenzar definimos que es el DHCP (Protocolo de Configuración Dinámica de Host), que asigna direcciones IP de forma dinámica a los dispositivos en una red local, lo que significa que la dirección IP del servidor de correo puede cambiar periódicamente. En cambio con el NAT (Traducción de Direcciones de Red) permite que múltiples dispositivos compartan una dirección IP pública, traduciendo las direcciones IP privadas locales a una dirección pública accesible desde internet. Cuando se combinan DHCP y NAT, la dirección IP pública del router/NAT es la que se ve desde internet, no la IP privada del servidor de correo. Si la IP pública del NAT cambia (por DHCP en el módem/router), el servidor deja de ser accesible externamente. Para solucionar esto se puede configurar NAT estático para asignar un puerto específico al servidor de correo o usar un servicio DNS dinámico que apunte al servidor a pesar de cambios de IP. En resumen, DHCP y NAT aportan flexibilidad pero potencialmente dificultan el acceso externo consistente a servidores de correo, por lo que se requieren configuraciones adicionales para garantizar su accesibilidad.
 

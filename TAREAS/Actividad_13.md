@@ -95,7 +95,7 @@ Cuando ejecutas este código, no verás ninguna salida visible en la consola a m
   - Para comenzar definimos que es el DHCP (Protocolo de Configuración Dinámica de Host), que asigna direcciones IP de forma dinámica a los dispositivos en una red local, lo que significa que la dirección IP del servidor de correo puede cambiar periódicamente. En cambio con el NAT (Traducción de Direcciones de Red) permite que múltiples dispositivos compartan una dirección IP pública, traduciendo las direcciones IP privadas locales a una dirección pública accesible desde internet. Cuando se combinan DHCP y NAT, la dirección IP pública del router/NAT es la que se ve desde internet, no la IP privada del servidor de correo. Si la IP pública del NAT cambia (por DHCP en el módem/router), el servidor deja de ser accesible externamente. Para solucionar esto se puede configurar NAT estático para asignar un puerto específico al servidor de correo o usar un servicio DNS dinámico que apunte al servidor a pesar de cambios de IP. En resumen, DHCP y NAT aportan flexibilidad pero potencialmente dificultan el acceso externo consistente a servidores de correo, por lo que se requieren configuraciones adicionales para garantizar su accesibilidad.
 
 
-## PROBLEMA 2: Implementación de un protocolo de redd personalizado sobre TCP
+## PROBLEMA 2: Implementación de un protocolo de red personalizado sobre TCP
 
 ### Contexto: 
 

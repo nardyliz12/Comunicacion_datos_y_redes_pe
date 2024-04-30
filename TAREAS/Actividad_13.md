@@ -6,7 +6,8 @@ Sean los siguientes conceptos dados en clase:5-4-3 rule Anonymous FTP Applicatio
 
 ## PROBLEMA 1: Diseño de un sistema de entrega y recupración de correo electrónico
 
-### Contexto: Una empresa necesita diseñar un sistema de correo electrónico robusto queutilice SMTP, IMAP, y SSL/TLS para la entrega y recuperación segura de correo electrónico.
+### Contexto: 
+Una empresa necesita diseñar un sistema de correo electrónico robusto queutilice SMTP, IMAP, y SSL/TLS para la entrega y recuperación segura de correo electrónico.
 
 - Para tu presentación y código a presentar puedes utilizar:Requisitos técnicos y diseño:
 
@@ -170,7 +171,7 @@ Este código crea una clase `ProtocolMessage` que contiene la información reque
 #### Paso 3: Evaluación del protocolo
 - Después de implementar el protocolo, usaríamos herramientas como Wireshark paramonitorear la eficacia del control de flujo y el manejo de errores durante la transferencia dearchivos. Esto podría involucrar la simulación de condiciones de red adversas, como altalatencia y pérdida de paquetes, para ver cómo el protocolo se comporta y se recupera deestos problemas.
 
-## PROBLEMA 3: Creaciónn de un sistema de autenticación segura con LDAP y  SSH
+## PROBLEMA 3: Creación de un sistema de autenticación segura con LDAP y  SSH
 
 ### Contexto: 
 Una organización requiere un sistema de autenticación segura que utilice LDAPpara la gestión de identidades y SSH para el acceso remoto.

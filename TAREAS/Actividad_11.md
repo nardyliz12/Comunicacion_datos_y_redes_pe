@@ -52,9 +52,9 @@ Se podría utilizar MPLS (Multiprotocol Label Switching) debido a que cuenta con
 
 - **Explica cómo cada dispositivo contribuye a la seguridad y eficiencia de la red.**
   
-   - Routers: Aseguranla conectividad entre las sucursales, donde se podrían implementar VPNs para cifrar el tráfico que pasa a través de la red pública.
-   - Switches: Mejora la eficiencia de la red al segmentar el tráfico y reducir las colisiones en la LAN.
-   - Firewalls: Sera fundamental para la seguridad de la red, filtrando el tráfico no deseado y previniendo accesos no autorizados que se lleguen a presentar.
+   - Routers: Aseguran la conectividad entre las sucursales, donde se podrían implementar VPNs para cifrar el tráfico que pasa a través de la red pública, donde su función es el enrutamiento seguro y control de acceso, implementando listas de contro de acceso(ACL) para proteger las redes internas, además, dirige el tráfico de manera inteligente entre las redes, optimizando el rendimiento y minimizando la congestión de técnicas como el enrutamiento dinámico.
+   - Switches: Mejora la eficiencia de la red al segmentar el tráfico y reducir las colisiones en la LAN, y facilita la conexión de las red local y contribuye a la seguridad al aislar el tráfico de las redes mediantes VLANs y segmentación de red. ;ejora la eficiencia para faciliar el tráfio de datos dentro de la red local, optimizando el rendimiento mediante el almacenamiento y reenvío selectivo de tramas. 
+   - Firewalls: Sera fundamental para la seguridad de la red, filtrando el tráfico no deseado y previniendo accesos no autorizados que se lleguen a presentar, además, reduce la congestión de la red al bloquear o permitir selectivamentes ciertos tipos de tráfico, optimizando así el uso del ancho de banda, donde previene intrusiones y ataques maliciosos mediante el control del tráfico estrante y saliente.
      
 #### Parte 2: Configuración de VNP de red
 

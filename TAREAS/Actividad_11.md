@@ -341,32 +341,43 @@ Eres el administrador de seguridad de una red corporativa y has notado unaumento
 
 **1. Describe cómo identificarías si estas transmisiones ARP son realmente maliciosas.**
 
+Podríamos utilizar una herramienta de monitoreo de red para analizar el tráfico ARP (Protocolo de Resolución de Direcciones) en la red, ya que, las transmisiones ARP maliciosas a menudo tienen características anómalas, como una gran cantidad de solicitudes ARP desde una sola direccción IP o solicitudes ARP para direcciones IP que no existen dentro de la red, donde también se podría buscar discrepancias entre las tablas de ARP de diferentes dispositvos en la red, ya que, si un dispositivo tiene una entrada ARP distinta para una direccción IP específica en comparación con otros dispositivos, podría ser un indicio de ARP spoofing que tambien se le conoce como envenenamiento de tablas ARP. Basicamente para detectar este tipo de transisiones de ARP es ver las discrepancias que existe entre las drecciones MAC y las direcciones IP en la caché ARP, ya que, esto ocurre cuando hay una traducción de dirección IP a la dirección MAC, donde un mensaje de red dirigido a la dirección MAC se redirige a la dirección IP correspondiente, momento en el que el ARP gestiona y actualiza la tabla ARP, no obstante, durante este proceso puede ocurrir un suplantamiento del ARP que es en este caso el ARP spoofing.
+
 **2. ¿Qué medidas tomarías para mitigar el ataque una vez confirmado?**
+
+Una vez confirmado el ataque, podriamos tomar varias medidas para mitigarlo. Por ejemplo, podriamos bloquear el tráfico del atacante en el switch o el router, o reconfigurar los dispositivos afectados para ignorar las respuestas ARP no solicitadas. También podrías implementar seguridad a nivel de puerto en tus switches para prevenir el uso de direcciones MAC falsificadas. Aprte de ellos podemos utilizar otras medidas que nos pueden ayudar en mitiga este tipo ataques, ya que cada uno de estos componentes juega un rol importante en la protección contra ataques de envenamiento ARP:
+  - Firewall: Un firewall puede ser configurado para bloquear o permitir tráfico basado en ciertas reglas, en el caso de ARP spoofing, el firewall puede ser configurado para bloquear tráfico ARP sospechoso o no solicitado.
+  - Filtro Router: Un router puede ser configurado para filtrar y bloquear tráfico ARP no deseado, lo que puede incluir solicitudes ARP excesivas de una misma dirección MAC, o respuestas ARP que no corresponden a ninguna solicitud previa.
+  - VPN (Virtual Private Network): Una VPN crea un túnel seguro entre el dispositivo del usuario y la red, lo que puede ayudar a proteger contra ARP spoofing al encriptar el tráfico de red y hacerlo ilegible para un atacante.
+  - NAC (Network Access Control): El NAC puede ayudar a prevenir el ARP spoofing al restringir el acceso a la red, ya que solo perimite el acceso a dispositivos autorizados.
+  - Segmentación de red: Separar la red en diferentes VLANs puede prevenir que el tráfico ARP de una VLAN afecte a otra, lo que puede limitar el alcance de un posible ataque de ARP spoofing.
 
 **3. Explica cómo un switch y un firewall pueden configurarse para prevenir futurosataques de este tipo.**
 
 - **Switch:** Se utiliza la función de ARP spoofing prevention que es una de las funciones que controla el acceso a la red basándose en su dirección Mac o su identificación en la red (Puerto, IP y dirección MAC).
 
-  - **Pasos para configurar la prevención de ARP Spoofing en un switch**:
+   - **Pasos para configurar la prevención de ARP Spoofing en un switch**:
 
-1. Acceder a la interfaz web del switch utilizando un navegador y colocando la dirección IP donde por defecto suele ser **10.90.90.90**.
-2. Ingresar a la configuración del switch y navegar a la sección de **Seguridad**.
-3. Buscar la opción de **ARP Spoofing Prevention**.
-4. Configurar los siguientes parámetros:
-  - **Dirección IP**: La dirección IP de tu **gateway**, **router** o **firewall**.
-  - **Dirección MAC**: La dirección MAC LAN de tu **gateway**, **router** o **firewall**.
-  - **Puertos**: Indica el puerto donde está conectado tu **gateway**, **router** o **firewall**.
-5. Agregar la prevención a la tabla ARP y guardar la configuración.
+    1. Acceder a la interfaz web del switch utilizando un navegador y colocando la dirección IP donde por defecto suele ser **10.90.90.90**.
+    2. Ingresar a la configuración del switch y navegar a la sección de **Seguridad**.
+    3. Buscar la opción de **ARP Spoofing Prevention**.
+    4. Configurar los siguientes parámetros:
+      - **Dirección IP**: La dirección IP de tu **gateway**, **router** o **firewall**.
+      - **Dirección MAC**: La dirección MAC LAN de tu **gateway**, **router** o **firewall**.
+      - **Puertos**: Indica el puerto donde está conectado tu **gateway**, **router** o **firewall**.
+    5. Agregar la prevención a la tabla ARP y guardar la configuración.
 
 - **Firewall:** Se utiliza ARP inspection para que verifique los paquetes ARP que los compara con las entradas en la tabla ARP, además, también se puede utilizar Dynamic ARP inspection que es donde interpreta todas las solicitudes y respuestas del ARP para asegurarse que solo ingresen las solicitudes y respuestas validas.
 
-- **Configuración en el Firewall**:
-  1. Acceder a la configuración del firewall.
-  2. Habilitar **ARP Inspection**.
-  3. Verificar que las entradas en la tabla ARP estén actualizadas y sean correctas.
-  4. Considerar también de configurar **IP Source Guard** para proteger contra ataques de spoofing que se pueden dar hasta en empresas.
+  - **Configuración en el Firewall**:
+    1. Acceder a la configuración del firewall.
+    2. Habilitar **ARP Inspection**.
+    3. Verificar que las entradas en la tabla ARP estén actualizadas y sean correctas.
+    4. Considerar también de configurar **IP Source Guard** para proteger contra ataques de spoofing que se pueden dar hasta en empresas.
   
 **4. Formula un plan para educar a los empleados sobre medidas de seguridad quepueden tomar para reducir el riesgo de ataques futuros.**
+
+Para reducir el riesgo de ataques futuros, es importante educar a los empleados sobre las medidas de seguridad, donde esto puede incluir la formación sobre los riesgos de los ataques de ARP spoofing, cómo identificar posibles ataques y qué hacer en caso de sospecha de un ataque, aemás, ambién sería útil enseñar buenas prácticas de seguridad, como no abrir correos electrónicos sospechosos o hacer clic en enlaces desconocidos, mantener actualizado el software de seguridad y reportar cualquier actividad sospechosa al equipo de seguridad de TI, basicamente seria tener un entrenamiento regular, realizar simulaciones de ataques y brindar recursos de aprendizaje en wireshark, ya que, wireshark puede capturar y registrar todo el tráfico ARP en la red, lo que nos permite ver todas las solicitudes y respuestas ARP que puede ser útil para identificar patrones anómalos que podrian indicar un ataque de ARP spoofing.
 
 - Para tu presentación y código a presentar puedes utilizar:
 
@@ -377,11 +388,11 @@ Eres el administrador de seguridad de una red corporativa y has notado unaumento
 3. Automatización y Monitorización: Usar Python para automatizar la detección yrespuesta, y monitorear continuamente la red para futuros ataques.
 4. Educación de Empleados: Proporcionar un plan para educar a los empleados sobrecómo pueden ayudar a reducir el riesgo de futuros ataques.
 
-#### Parte 1: Detección de ARP Spoofing con Python
+### Parte 1: Detección de ARP Spoofing con Python
 
 ##### Código python:
 
-#### parte 2: Mitigaciónn del Ataque
+### Parte 2: Mitigaciónn del Ataque
 
 - *Discusión de Estrategias de Mitigación*
 
@@ -389,7 +400,58 @@ Eres el administrador de seguridad de una red corporativa y has notado unaumento
   
 - **Uso de Seguridad de Puerto: Configurar la seguridad de puerto en los switches paralimitar el número de MACs por puerto y prevenir posibles ataques.**
 
-#### Parte 3: Automatización y monitorización
+##### Código python:
+````
+from netmiko import ConnectHandler
+
+# Definir los parámetros de conexión
+device = {
+    'device_type': 'cisco_ios',
+    'ip': '192.168.1.1',
+    'username': 'tu_usuario',
+    'password': 'tu_contraseña',
+    'port': 22,  # Puerto SSH por defecto
+    'timeout': 10,  # Aumentar el tiempo de espera a 10 segundos
+}
+
+# Comando para configurar la seguridad de puerto en un switch Cisco
+security_commands = [
+    'interface GigabitEthernet0/1',  # Reemplaza con la interfaz específica
+    'switchport port-security maximum 5',  # Limitar el número de MACs a 5
+    'switchport port-security violation restrict',  # Restringir la violación de seguridad
+    'switchport port-security aging time 2',  # Tiempo de envejecimiento de las direcciones MAC
+]
+
+try:
+    # Intentar establecer la conexión SSH
+    net_connect = ConnectHandler(**device)
+    print("Conexión SSH establecida exitosamente.")
+    
+    # Enviar comandos de configuración de seguridad de puerto
+    output = net_connect.send_config_set(security_commands)
+    print(output)
+    
+except Exception as e:
+    # Capturar cualquier excepción y mostrar el mensaje de error
+    print(f"Error al intentar conectarse al dispositivo: {str(e)}")
+
+
+````
+#### Resultados:
+````
+Error al intentar conectarse al dispositivo: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 192.168.1.1:22
+
+````
+El código intenta establecer una conexión SSH con un dispositivo de red utilizando la biblioteca Netmiko en Python, donde rimero, se definen los parámetros de conexión, que incluyen el tipo de dispositivo, la dirección IP, el nombre de usuario, la contraseña y el puerto SSH y uego, se intenta establecer la conexión utilizando un bloque try-except para capturar cualquier excepción que pueda ocurrir durante el proceso de conexión. Si la conexión se establece correctamente, se imprime un mensaje indicando que la conexión SSH se ha establecido con éxito. En caso de cualquier error durante el proceso de conexión, se captura la excepción y se imprime un mensaje de error específico, este enfoque de manejo de excepciones permite identificar y diagnosticar problemas de conexión de manera efectiva, además que previene posibles ataques de ARP. 
+
+### Parte 3: Automatización y monitorización
 ##### Código de python:
  
 ## PROBLEMA 4: Análisis y diseño de red Peer-to-Peer (P2P)

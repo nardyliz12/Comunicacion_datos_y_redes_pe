@@ -391,6 +391,34 @@ Para reducir el riesgo de ataques futuros, es importante educar a los empleados 
 ### Parte 1: Detección de ARP Spoofing con Python
 
 ##### Código python:
+````
+from scapy.all import ARP, sniff, getmacbyip
+
+def detect_arp_spoofing(packet):
+    if packet.haslayer(ARP):
+        if packet[ARP].op == 2:  # is it an ARP response (ARP reply)?
+            try:
+                real_mac = getmacbyip(packet[ARP].psrc)
+                response_mac = packet[ARP].hwsrc
+                if real_mac != response_mac:
+                    print(f"[ALERT] ARP Spoofing Detected: {packet[ARP].psrc} has been spoofed!")
+            except IndexError:
+                # Unable to find the MAC address for the IP address in the ARP response
+                pass
+
+def sniff_network(interface):
+    sniff(iface=interface, store=False, prn=detect_arp_spoofing, filter="arp", timeout=10)
+
+# Ejemplo de uso
+sniff_network('eth0')
+
+````
+#### Resultados:
+````
+ERROR: Cannot set filter: libpcap is not available. Cannot compile filter !
+ERROR:scapy.runtime:Cannot set filter: libpcap is not available. Cannot compile filter !
+````
+Este código utiliza la biblioteca Scapy para detectar el ataque de ARP Spoofing en una red, donnde a función `detect_arp_spoofing()` se define para analizar los paquetes capturados en busca de paquetes ARP, ya que si se detecta un paquete ARP de respuesta (ARP reply), intenta obtener la dirección MAC real del IP origen y compara esta dirección con la dirección MAC de respuesta en el paquete ARP, pero si las direcciones MAC no coinciden, se emite una alerta indicando que se ha detectado un ataque de ARP Spoofing, además, la función `sniff_network()` se encarga de capturar paquetes en la interfaz de red especificada y llamar a `detect_arp_spoofing()` para cada paquete capturado, donde en el ejemplo de uso proporcionado, se llama a `sniff_network()` con la interfaz 'eth0' para comenzar a monitorear la red en busca de ataques de ARP Spoofing, pero que en este caso no se puedo establcer dicha coneción por ciertas restricciones que se presentarón al momento de realizar la ejecución. 
 
 ### Parte 2: Mitigaciónn del Ataque
 
@@ -453,7 +481,49 @@ El código intenta establecer una conexión SSH con un dispositivo de red utiliz
 
 ### Parte 3: Automatización y monitorización
 ##### Código de python:
- 
+
+````
+from netmiko import ConnectHandler
+
+def enable_dai(switch_details):
+    commands = [
+        'ip arp inspection vlan 1-100',
+        'interface range fa0/1-24',
+        'ip arp inspection limit rate 100'
+    ]
+    try:
+        with ConnectHandler(**switch_details) as switch:
+            output = switch.send_config_set(commands)
+            print(output)
+            print("Conexión SSH establecida exitosamente y comandos enviados.")
+    except Exception as e:
+        print(f"Error al intentar conectarse al dispositivo: {str(e)}")
+
+# Ejemplos de uso
+switch_details = {
+    'device_type': 'cisco_ios',
+    'host': '192.168.1.1',
+    'username': 'admin',
+    'password': 'password',
+    'port': 22,  # Asegúrate de cambiar esto al puerto correcto si es diferente
+    'timeout': 10,  # Aumentar el tiempo de espera a 10 segundos
+}
+
+enable_dai(switch_details)
+````
+#### Resultados:
+````
+Error al intentar conectarse al dispositivo: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 192.168.1.1:22
+````
+Este código utiliza la biblioteca `netmiko` para establecer una conexión SSH con un dispositivo de red y enviar comandos de configuración para habilitar Dynamic ARP Inspection (DAI), donde la función `enable_dai()` toma un diccionario `switch_details` que contiene los detalles de conexión, como la dirección IP, nombre de usuario, contraseña, etc, luego, define una lista de comandos de configuración específicos para habilitar DAI en el switch, dentro de un bloque `try`, utiliza `ConnectHandler` de `netmiko` para establecer la conexión SSH con los detalles proporcionados y envía los comandos de configuración al switch usando `send_config_set()`, ya que, si la conexión y el envío de comandos son exitosos, imprime el resultado y un mensaje de confirmación. Si ocurre algún error durante el proceso, captura la excepción y muestra un mensaje de error adecuado.
+
 ## PROBLEMA 4: Análisis y diseño de red Peer-to-Peer (P2P)
 ### Escenario: 
 

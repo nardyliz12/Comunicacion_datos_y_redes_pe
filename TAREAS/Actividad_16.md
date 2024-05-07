@@ -1,1 +1,10 @@
-# ACTIVIDAD 15: 
+# ACTIVIDAD 16 
+![1](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/d08f85ec-134f-4dbc-95a6-c4e139f0c581)
+![2](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/01003ebc-ccbb-4c63-a052-08107858cffd)
+![3](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/af7bebda-57c4-4b37-a2c3-8c706e927036)
+![4](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/0a644ce6-7857-4f04-a5ea-0883e68c4542)
+![5](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/0cff2cd6-6aeb-4cc6-b894-b4466aa2433a)
+![6](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/434d53fc-9e12-4b23-a71a-c12715d1b5b4)
+![7](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/966a9082-29a6-4ffc-87c2-eab32d67e41f)
+![8](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/3a57b241-dfdf-4912-a933-3510873720f1)
+![9](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/66092788-81f8-4464-a039-21bc7e9b025e)

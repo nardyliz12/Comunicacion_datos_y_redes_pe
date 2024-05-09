@@ -8,6 +8,8 @@ Conceptos involucrados: DNS client, DNS resolver, Recursive DNS query, Iterative
 
   - Implementa una función resolve_name que acepte un nombre de dominio y el tipo de registro y que determine qué tipo de consulta realizar (recursiva o iterativa).
   - Define funciones auxiliares que simulen el comportamiento de diferentes tipos de registros y cómo serían resueltos.
+### Codigo de python:
+
 
 - ## Problema 22: Gestión de caché en un servidor DNS
 

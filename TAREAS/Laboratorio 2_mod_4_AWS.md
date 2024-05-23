@@ -1,46 +1,94 @@
-# Actividad: Repaso de protocolos 
-## Objetivos 
-- Relacionar los protocolos de red de la computadora con las reglas que usa todos los días  como diversas formas de comunicación. 
-- Definir las reglas que rigen cómo se envían e interpretan los mensajes de texto. - Explicar qué pasaría si el emisor y el receptor no coincidieran en los detalles del protocolo. 
+# Laboratorio 2 Módulo 4: Creaciónde un Bucket de S3
 
-## Preguntas:
-## Un método de comunicación acordado
+El objetivo de este laboratorio es crear un bucket de Amazon Simple Storage Service (Amazon S3) para alojar un sitio web estático.
 
-- **¿Solo enviamos texto? ¿Enviamos y  recibimos fotos? ¿Y los emoticones y emoji?**
-
-El método de comunicación es acordado y se puede implementar mediante la configuración de símbolos que contiene el teclado por así decirlo y el sistema de lenguaje que se maneja, además de usar emojis para expresar emociones que tiene su propia dirección, y multimedia en hipertexto para redireccionar a información útil para compartir con el receptor.
-
-## Idioma y gramática  común
-
-- **¿Usamos acrónimos? ¿Es aceptable  el argot? ¿Cuál es el idioma materno de los participantes?**
+## Tarea 1. Crear un S3 Bucket
+- Primero localizamos los servicios de **Storage**(almacenamiento) y seleccionamos S3.
   
-El emisor determina el caracter y la intención del mensaje que se quiere enviar, que comunica mediante un idioma comprensible para el receptor, donde se complementa con la elección combinatoria de las letras o palabras que cobren significado y sean codificados para ser interpretado y traducido por los protocolos en respuesta del receptor.
+  ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/bd294022-1f2a-40ac-89c2-6dd46a1f96db)
 
-## Velocidad y momento  de entrega
+- Luego seleccionamos **Create bucket** (crear bucket)
 
-- **¿Qué determina con qué velocidad  llega el mensaje al destinatario? ¿Con  qué velocidad esperamos recibir una  respuesta?**
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/4a3a02f1-d96e-4077-b377-a2568085effa)
 
- Es determinado por la velocidad de transmisión de datos, la latencia en la red, y la ruta de mensaje, donde es ahi que se controla la eficiencia del protocolo para el envío y recepción de los mensajes, además, esperamos recibir una respuesta rápida, pero depende mucho de la velocidad de la lectura y respuesta del destinatario de red que varia de acuerdo al dispositivo que se esta utilizando.
+- Luego introducimos el nombre con el cual vamos a crear nuestro nuevo bucket
 
-## Requisitos de confirmación o acuse  de recibo.
+  ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/f15c94e9-77e8-4e5b-b43f-119e5906c036)
 
-- **¿Cómo sabe que se recibió el mensaje? ¿Cómo sabe que la conversación terminó?**
+- En cuanto a la Región, elija la región de AWS en la que desea que resida el bucket.
   
-Se sabe cuando llega la confirmación de entrega, incluyendo el acuse de recibo, para luego pasar a la confirmación por parte del destinatario. Por otro lado, se puede saber si un mensaje terminó cuando existe la señal de despedida de manera clara, mediante un mensaje final enviado por cada una de las partes.
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/d791c3c7-a6d3-40af-8a1f-df489b404fc3)
 
-## Preguntas 
+- Desmarque la casilla Block all public access (Bloquear todo el acceso público) porque quiere poder probar si el sitio web funciona.
+  
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/456b5dc7-5286-4f10-b73a-a9cd641be8e9)
 
-**1. Ahora que anotaste los protocolos que usan el enviar y leer mensajes de texto, ¿crees que estos  protocolos serían los mismos si estuviera escribiendo a amigos que si estuviera escribiendo a  sus padres o profesores? Explica tu respuesta.**
+- Debajo aparece un mensaje de advertencia, en esa casilla vamos a marcarlo para poder continuar
 
-Es poco probable que los protocolos sean exactamente los mismos al escribir a amigos versus padres o profesores. Aunque los requisitos técnicos básicos podrían ser similares, probablemente habría diferencias en cuanto al grado de formalidad en el lenguaje, los acrónimos que son permitidos, incluyendo la velocidad de respuesta. 
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/2720ed83-47c1-41a7-a426-8e7aeb26561c)
 
-**2. ¿Cuáles crees que serían las consecuencias si no hubiera estándares de protocolo acordados  para los diferentes métodos de comunicación?**
+- Vaya al final de la página y seleccione Create bucket (Crear bucket).
 
-Si no existieran los estándares de protocolo, podría haber una probabilidad de padecer problemas de compatibilidad entre diferentes aplicaciones o servicios en los mensajes, donde cada uno tendría sus propias reglas, lo que dificultaria la comunicación fluida, además, podría existir problemas de confiabilidad, seguridad y privacidad en la entrega de los mensajes sin protocolos estandarizados.
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/dbf2d7b0-6357-4527-9a10-3a1eed1b2c8d)
 
-**3. Comparte las reglas de protocolo con tus compañeros de equipo. ¿Hay diferencias entre tus  protocolos y los de ellos? Si es así, ¿podrían estas diferencias producir malentendidos de los  mensajes?**
-Se usa protocolos estándar:
+## Tarea 2:  Agregar una política de bucket para que el contenido esté disponible de manera pública
+- Elija el enlace del nombre de su bucket y, a continuación, seleccione la pestaña Permissions (Permisos).
 
-Utilizar protocolos de mensajería establecidos como SMTP (Protocolo Simple de Transferencia de Correo), POP (Protocolo de Oficina de Correos) e IMAP (Protocolo de Acceso a Mensajes de Internet) para el envío y recepción de mensjes, ya que estos protocolos ya se encuentran netamente establecidos, pero si podrian haber malos entnedido habiendo un desorden en la jeraquia.
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/dfbd4ce8-00f8-42b1-97fa-d3d92e51070a)
 
+- En la sección Bucket policy (Política del bucket), elija Edit (Editar).
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/26bc9c6b-8818-464d-a131-7156dec7b988)
+
+- Para conceder acceso de lectura público al sitio web, copie la siguiente política de bucket y péguela en el editor de políticas.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/36586270-36a4-4bca-9469-b270befa17e3)
+
+- Y guardamos los cambios
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/dbb1aa75-9f6a-4d6c-b38e-f0efbed79eab)
+
+## Tarea 3: Cargar un documento HTML
+
+- Abra el menú contextual (haga clic con el botón derecho del ratón) en el siguiente enlace y, a continuación, seleccione Save link as (Guardar enlace como): index.html y guardalo en tu navegador, luego En la consola, seleccione la pestaña Objects (Objetos).
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/4759bae1-e574-4b46-90ed-c5ec9704d830)
+
+- Carga el archivo index.html en el bucket y arrastra el archivo.
+  
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/158f4872-6e1b-41a0-bc1f-6e3233d9b471)
+
+- Ahora ve a la sección de **Properties**(propiedades)
+ 
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/5a845521-8310-4feb-b514-4f1c2bf95e04)
+
+- Y colocamos cargar
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/0666d5d2-3a67-4984-a974-9d9197ec9b0a)
+
+- Luego elija Close (Cerrar).
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/5875aa88-d740-44e1-9fef-a9bd88b0f659)
+
+## Tarea 4: Probar el sitio web
+
+- Seleccione la pestaña Properties (Propiedades) y baje hasta la sección Static website hosting (Alojamiento de sitios web estáticos) y elija editar.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/a3c1edf2-f6c5-46d5-acf2-f84e14631ae9)
+
+- Y seleccione **Enable** (Habilitar)
+  
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/667bcb1d-2776-4936-9177-1e3da775f854)
+
+- En el cuadro de texto Index document (Documento de índice), ingrese index.html y seleccione guardar cambios.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/2edeba8f-1fc6-437f-89c1-694cdc3ce6c7)
+
+- Desplácese hacia abajo a la sección de Static website hosting (Alojamiento de sitios web estáticos) y copie la URL del Bucket website endpoint (punto de enlace del sitio web del bucket) en el portapapeles y pongalo en una nueva pestaña de su navegador.
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/25b23125-8c04-4e20-bd3b-4ac42e720128)
+
+- Resultado final del laboratorio
+
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/a1c6e5d6-a200-4683-a3a8-174a3cc248d9)
 

@@ -126,23 +126,22 @@ El objetivo de este laboratorio es utilizar Amazon CloudFront como red de entreg
 
 - Copie el valor del Domain Name (Nombre de dominio) de su distribución y guárdelo en un editor de texto para utilizarlo más adelante.
 
-![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/1f5c3448-3b77-4954-b591-668f2c6bc4f9)
-
-https://d19u3lige00p72.cloudfront.net
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/9e392c95-bc0a-45d7-9fc0-277a0e6fa691)
 
 - Vaya al bucket de S3 y suba el archivo de imagen a él, asegúrese de conceder acceso público como hizo al subir el archivo HTML anteriormente en este laboratorio.
 
 ![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/47e0c9e1-5c2b-42a4-98e1-424cbedd9cf2)
 
-- Cree un nuevo archivo de texto con el Bloc de notas y copie el siguiente texto en él y sustituye el nombre de dominio que se copio antes:
-
+- Cree un nuevo archivo de texto con el Bloc de notas y copie el siguiente texto en él y sustituye el nombre de dominio que se copio antes y la imagen subida anteriormente:
+```
 <html>
     <head>My CloudFront Test</head>
     <body>
         <p>My test content goes here.</p>
-        <p><img src="https://d19u3lige00p72.cloudfront.net" alt="my test image">
+        <p><img src="https://d2w4986nbbs2xt.cloudfront.net/jhope.jpeg" alt="my test image">
     </body>
 </html>
+```
+- Resultado final del laboratorio
 
-<p><img 
-src="https://s3.amazonaws.com/nardy.condori/jhope.jpeg" alt="my test image">
+![image](https://github.com/nardyliz12/Comunicacion_datos_y_redes_pe/assets/151795724/d33cb696-6422-4e8d-9561-0c63ef38cbc5)
